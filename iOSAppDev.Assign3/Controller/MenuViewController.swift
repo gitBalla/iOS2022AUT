@@ -1,13 +1,14 @@
 //
-//  ViewController.swift
+//  MenuViewController.swift
 //  iOSAppDev.Assign3
 //
 //  Created by John Balla on 3/5/2022.
 //
 
+import GooglePlaces
 import UIKit
 
-class ViewController: UIViewController {
+class MenuViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,4 +17,3 @@ class ViewController: UIViewController {
 
 
 }
-

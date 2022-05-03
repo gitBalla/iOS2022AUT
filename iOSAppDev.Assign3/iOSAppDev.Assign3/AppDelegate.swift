@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import GooglePlaces //imports Google Places API
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Links Google Places API to account
+        GMSPlacesClient.provideAPIKey("AIzaSyB8nPYUvbS5cI_I2RRK1Nug-6Jc3QEywm0")
+        
         return true
     }
 
