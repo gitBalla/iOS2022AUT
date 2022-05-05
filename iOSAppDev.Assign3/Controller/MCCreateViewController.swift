@@ -13,8 +13,9 @@ class MCCreateViewController: UIViewController {
     
     var peerID: MCPeerID!
     var session: MCSession!
-    var advertiserAssistant: MCAdvertiserAssistant!
-
+    //var advertiserAssistant: MCAdvertiserAssistant!
+    var nearbyServiceAdvertiser: MCNearbyServiceAdvertiser!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         peerID = MCPeerID(displayName: UIDevice.current.name)
@@ -22,7 +23,20 @@ class MCCreateViewController: UIViewController {
         session.delegate = self
 
     }
+    
+    @IBAction func advertise(_ sender: Any) {
+        nearbyServiceAdvertiser = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: "gt-chess")
+        nearbyServiceAdvertiser.delegate = self
+        nearbyServiceAdvertiser.startAdvertisingPeer()
+    }
+    
+    @IBAction func join(_ sender: Any) {
+        let browser = MCBrowserViewController(serviceType: "gt-chess", session: session)
+        browser.delegate = self
+        present(browser, animated: true)
+    }
 }
+
 
 extension MCCreateViewController: MCBrowserViewControllerDelegate {
     func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {
@@ -60,4 +74,12 @@ extension MCCreateViewController: MCSessionDelegate {
     
     func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
     }
+}
+
+extension MCCreateViewController: MCNearbyServiceAdvertiserDelegate {
+    func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
+        invitationHandler(true, session)
+    }
+    
+    
 }

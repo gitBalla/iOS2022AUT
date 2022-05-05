@@ -142,12 +142,39 @@
         <!--Create View Controller-->
         <scene sceneID="iPk-aF-BcR">
             <objects>
-                <viewController id="Na2-ms-whJ" customClass="MCCreateViewController" customModule="iOSAppDev_Assign3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Na2-ms-whJ" customClass="MCCreateViewController" customModule="iOSAppDev_Assign3" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZpT-sS-nM8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="46" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8is-7x-TLG">
+                                <rect key="frame" x="164.5" y="436.5" width="85" height="77"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bb8-lB-ikf">
+                                        <rect key="frame" x="0.0" y="0.0" width="85" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="tinted" title="Advertise"/>
+                                        <connections>
+                                            <action selector="advertise:" destination="Na2-ms-whJ" eventType="touchUpInside" id="u56-8R-qHM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyy-As-Leg">
+                                        <rect key="frame" x="0.0" y="46" width="85" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="Join"/>
+                                        <connections>
+                                            <action selector="join:" destination="Na2-ms-whJ" eventType="touchUpInside" id="yYH-zc-lyM"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="yf3-Ln-zdM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8is-7x-TLG" firstAttribute="centerY" secondItem="yf3-Ln-zdM" secondAttribute="centerY" id="CJ4-4i-UBf"/>
+                            <constraint firstItem="8is-7x-TLG" firstAttribute="centerX" secondItem="yf3-Ln-zdM" secondAttribute="centerX" id="rAZ-sH-POk"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="sVF-Mt-9pm"/>
                 </viewController>
