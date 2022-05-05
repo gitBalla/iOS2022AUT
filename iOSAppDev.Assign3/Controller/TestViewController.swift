@@ -15,17 +15,32 @@ class TestViewController: UIViewController, CLLocationManagerDelegate  {
     @IBOutlet private var addressLabel: UILabel!
 
     private var placesClient: GMSPlacesClient!
-    var locationManager: CLLocationManager?
+    let locationManager = CLLocationManager()
 
     override func viewDidLoad() {
       super.viewDidLoad()
       placesClient = GMSPlacesClient.shared()
       
-      // Initalise CLLocationManager to get location
-      locationManager = CLLocationManager()
-      locationManager?.delegate = self
       // request authorization for location when in use
-      locationManager?.requestWhenInUseAuthorization()
+      locationManager.requestWhenInUseAuthorization()
+      locationManager.delegate = self
+      locationManager.startUpdatingLocation()
+
+        switch locationManager.authorizationStatus {
+        case .restricted, .denied:
+            print("restricted or denied")
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .authorizedAlways:
+            print("error, should not authorize always")
+        default:
+            print("authorized location when in use")
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus)
+    {
+
     }
 
 

@@ -11,11 +11,11 @@
 			<key>UIWindowSceneSessionRoleApplication</key>
 			<array>
 				<dict>
-					<key>NSLocationWhenInUseUsageDescription</key>
-					<string>Used to show your location on the map</string>
 					<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 					<string>Used to show your location on the map</string>
 					<key>NSLocationAlwaysUsageDescription</key>
+					<string>Used to show your location on the map</string>
+					<key>NSLocationWhenInUseUsageDescription</key>
 					<string>Used to show your location on the map</string>
 					<key>UISceneConfigurationName</key>
 					<string>Default Configuration</string>
