@@ -33,7 +33,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="2C1-wy-99c">
-                                <rect key="frame" x="140" y="367" width="134" height="162.5"/>
+                                <rect key="frame" x="140" y="296" width="134" height="304.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Picker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l6Q-M0-P9a">
                                         <rect key="frame" x="0.0" y="0.0" width="134" height="20.5"/>
@@ -55,6 +55,19 @@
                                         <buttonConfiguration key="configuration" style="tinted" title="Test Map"/>
                                         <connections>
                                             <segue destination="VGK-a5-mDU" kind="show" id="Lvf-KE-KI3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d31-lg-I9A">
+                                        <rect key="frame" x="0.0" y="202.5" width="134" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="tinted" title="Join Session"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFF-6Z-ErP">
+                                        <rect key="frame" x="0.0" y="273.5" width="134" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="tinted" title="Create Session"/>
+                                        <connections>
+                                            <segue destination="Na2-ms-whJ" kind="show" id="JSM-mM-aCj"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -125,6 +138,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Ej-0J-pa5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="33.333333333333336" y="832.36607142857144"/>
+        </scene>
+        <!--Create View Controller-->
+        <scene sceneID="iPk-aF-BcR">
+            <objects>
+                <viewController id="Na2-ms-whJ" customClass="MCCreateViewController" customModule="iOSAppDev_Assign3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZpT-sS-nM8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="yf3-Ln-zdM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="sVF-Mt-9pm"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iVy-lQ-S6K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="933" y="832"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="MVX-fp-bt7">

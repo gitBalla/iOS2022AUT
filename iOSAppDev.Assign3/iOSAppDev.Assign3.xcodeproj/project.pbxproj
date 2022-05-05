@@ -16,6 +16,7 @@
 		D86719D02820CC5500C25B91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D86719CE2820CC5500C25B91 /* LaunchScreen.storyboard */; };
 		D8B977932820F38A00EE8888 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B977922820F38A00EE8888 /* TestViewController.swift */; };
 		D8B977952820F39C00EE8888 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B977942820F39C00EE8888 /* MenuViewController.swift */; };
+		E1395BCF2823E1FC0061C2D4 /* MCCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1395BCE2823E1FC0061C2D4 /* MCCreateViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		D86719D12820CC5500C25B91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8B977922820F38A00EE8888 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		D8B977942820F39C00EE8888 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		E1395BCE2823E1FC0061C2D4 /* MCCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCCreateViewController.swift; sourceTree = "<group>"; };
 		E9FA4B4B2B03B5F2C3992606 /* Pods-iOSAppDev.Assign3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSAppDev.Assign3.release.xcconfig"; path = "Target Support Files/Pods-iOSAppDev.Assign3/Pods-iOSAppDev.Assign3.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +111,7 @@
 				D86719C72820CC5500C25B91 /* MainViewController.swift */,
 				D8B977922820F38A00EE8888 /* TestViewController.swift */,
 				D8B977942820F39C00EE8888 /* MenuViewController.swift */,
+				E1395BCE2823E1FC0061C2D4 /* MCCreateViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1395BCF2823E1FC0061C2D4 /* MCCreateViewController.swift in Sources */,
 				D86719C82820CC5500C25B91 /* MainViewController.swift in Sources */,
 				D8B977952820F39C00EE8888 /* MenuViewController.swift in Sources */,
 				D86719C42820CC5500C25B91 /* AppDelegate.swift in Sources */,
@@ -302,6 +306,8 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_TESTING_SEARCH_PATHS = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -362,6 +368,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTING_SEARCH_PATHS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -389,6 +396,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4789XR75RM;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOSAppDev.Assign3/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Map needs your location";
@@ -420,6 +429,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4789XR75RM;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOSAppDev.Assign3/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Map needs your location";
