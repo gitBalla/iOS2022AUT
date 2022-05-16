@@ -37,7 +37,13 @@ class MCCreateViewController: UIViewController {
         present(browser, animated: true)
     }
     @IBAction func didPressNo(_ sender: Any) {
-        let msg = "sent message"
+        let msg = "didPressNo"
+        if let msgData = msg.data(using: .utf8) {
+            try? session.send(msgData, toPeers: session.connectedPeers, with: .reliable)
+        }
+    }
+    @IBAction func didPressYes(_ sender: Any) {
+        let msg = "didPressYes"
         if let msgData = msg.data(using: .utf8) {
             try? session.send(msgData, toPeers: session.connectedPeers, with: .reliable)
         }
