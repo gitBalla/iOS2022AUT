@@ -24,6 +24,7 @@ class MCCreateViewController: UIViewController {
 
     }
     
+    
     @IBAction func advertise(_ sender: Any) {
         nearbyServiceAdvertiser = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: "food-tinder")
         nearbyServiceAdvertiser.delegate = self
@@ -34,6 +35,12 @@ class MCCreateViewController: UIViewController {
         let browser = MCBrowserViewController(serviceType: "food-tinder", session: session)
         browser.delegate = self
         present(browser, animated: true)
+    }
+    @IBAction func didPressNo(_ sender: Any) {
+        let msg = "sent message"
+        if let msgData = msg.data(using: .utf8) {
+            try? session.send(msgData, toPeers: session.connectedPeers, with: .reliable)
+        }
     }
 }
 
@@ -64,6 +71,10 @@ extension MCCreateViewController: MCSessionDelegate {
     }
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
+        print("didReceive Data")
+        if let msg = String(data: data, encoding: .utf8){
+            print("received: \(msg)")
+        }
     }
     
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
