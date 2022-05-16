@@ -400,6 +400,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOSAppDev.Assign3/Info.plist;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = iOSAppDevAssignment3;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Map needs your location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -432,6 +433,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOSAppDev.Assign3/Info.plist;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = iOSAppDevAssignment3;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Map needs your location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

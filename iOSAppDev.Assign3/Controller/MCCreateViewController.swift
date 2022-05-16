@@ -25,13 +25,13 @@ class MCCreateViewController: UIViewController {
     }
     
     @IBAction func advertise(_ sender: Any) {
-        nearbyServiceAdvertiser = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: "gt-chess")
+        nearbyServiceAdvertiser = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: "food-tinder")
         nearbyServiceAdvertiser.delegate = self
         nearbyServiceAdvertiser.startAdvertisingPeer()
     }
     
     @IBAction func join(_ sender: Any) {
-        let browser = MCBrowserViewController(serviceType: "gt-chess", session: session)
+        let browser = MCBrowserViewController(serviceType: "food-tinder", session: session)
         browser.delegate = self
         present(browser, animated: true)
     }
