@@ -10,22 +10,25 @@ import UIKit
 import CoreLocation
 
 class TestViewController: UIViewController, CLLocationManagerDelegate  {
-
+    // labels to display info
     @IBOutlet private var nameLabel: UILabel!
     @IBOutlet private var addressLabel: UILabel!
-
+    // google places interface
     private var placesClient: GMSPlacesClient!
+    // handles access to location services within app
     let locationManager = CLLocationManager()
 
     override func viewDidLoad() {
       super.viewDidLoad()
+      // localize places interface to view when loading in
       placesClient = GMSPlacesClient.shared()
       
       // request authorization for location when in use
       locationManager.requestWhenInUseAuthorization()
       locationManager.delegate = self
       locationManager.startUpdatingLocation()
-
+        
+        // error checking for authorization status
         switch locationManager.authorizationStatus {
         case .restricted, .denied:
             print("restricted or denied")
@@ -38,12 +41,13 @@ class TestViewController: UIViewController, CLLocationManagerDelegate  {
         }
     }
     
+    // handles changes in authorization status
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus)
     {
 
     }
 
-
+    // on button press loads current location name and formatted address
     @IBAction func getCurrentPlace(_ sender: UIButton) {
       let placeFields: GMSPlaceField = [.name, .formattedAddress]
       placesClient.findPlaceLikelihoodsFromCurrentLocation(withPlaceFields: placeFields) { [weak self] (placeLikelihoods, error) in

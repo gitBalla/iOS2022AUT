@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         // Links Google Places API to account
-        GMSPlacesClient.provideAPIKey("AIzaSyB8nPYUvbS5cI_I2RRK1Nug-6Jc3QEywm0")
+        GMSPlacesClient.provideAPIKey("AIzaSyCO7VyaREQgfumMiDbACVCUuDtoQe_Qolk")
         
         return true
     }
