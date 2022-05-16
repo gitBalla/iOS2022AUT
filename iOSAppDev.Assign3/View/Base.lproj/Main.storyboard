@@ -88,7 +88,7 @@
             </objects>
             <point key="canvasLocation" x="20" y="94"/>
         </scene>
-        <!--Test View Controller-->
+        <!--Test Google Places-->
         <scene sceneID="yz8-8c-1qy">
             <objects>
                 <viewController restorationIdentifier="TestViewController" storyboardIdentifier="TestViewController" id="VGK-a5-mDU" customClass="TestViewController" customModule="iOSAppDev_Assign3" customModuleProvider="target" sceneMemberID="viewController">
@@ -96,8 +96,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xal-fR-BwG">
-                                <rect key="frame" x="38" y="323.5" width="338" height="249"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="xal-fR-BwG">
+                                <rect key="frame" x="38" y="255" width="338" height="386"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfZ-sJ-njK">
                                         <rect key="frame" x="0.0" y="0.0" width="338" height="31"/>
@@ -108,17 +108,46 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sks-aO-mZ1">
-                                        <rect key="frame" x="0.0" y="31" width="338" height="109"/>
+                                        <rect key="frame" x="0.0" y="49" width="338" height="109"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Viq-vQ-eXY">
-                                        <rect key="frame" x="0.0" y="140" width="338" height="109"/>
+                                        <rect key="frame" x="0.0" y="176" width="338" height="109"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oXz-75-RFE">
+                                        <rect key="frame" x="0.0" y="303" width="338" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Find Nearby"/>
+                                        <connections>
+                                            <segue destination="8yf-IB-joc" kind="show" id="KGg-8e-mxl"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HUF-Ru-JIl">
+                                        <rect key="frame" x="0.0" y="352" width="338" height="34"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxw-0y-7nG">
+                                                <rect key="frame" x="0.0" y="0.0" width="72" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="cxw-0y-7nG" secondAttribute="height" multiplier="36:17" id="5dY-bC-Dos"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Find at:"/>
+                                            </button>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rn8-Is-GN6">
+                                                <rect key="frame" x="72" y="0.0" width="266" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="rn8-Is-GN6" secondAttribute="height" multiplier="133:17" id="i4l-ha-sRc"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -129,7 +158,9 @@
                             <constraint firstItem="xal-fR-BwG" firstAttribute="centerY" secondItem="Vs7-TU-2rp" secondAttribute="centerY" id="uDk-Wb-o9A"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Wem-QK-MCh"/>
+                    <navigationItem key="navigationItem" title="Test Google Places" id="Wem-QK-MCh">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="GT5-k2-Mak"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="addressLabel" destination="Viq-vQ-eXY" id="7jf-B5-2Qg"/>
                         <outlet property="nameLabel" destination="sks-aO-mZ1" id="okb-yR-UXg"/>
@@ -219,6 +250,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yfa-2H-Lsj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="916" y="94"/>
+        </scene>
+        <!--Test Menu View Controller-->
+        <scene sceneID="A5E-G7-WvZ">
+            <objects>
+                <tableViewController restorationIdentifier="TestMenuViewController" storyboardIdentifier="TestMenuViewController" id="8yf-IB-joc" customClass="TestMenuViewController" customModule="iOSAppDev_Assign3" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="JVP-m9-2b6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Menu Selection" textLabel="9tE-Uv-8Af" style="IBUITableViewCellStyleDefault" id="o16-tY-z34">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="o16-tY-z34" id="oR9-dv-gbZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9tE-Uv-8Af">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="8yf-IB-joc" id="vIO-nG-9xh"/>
+                            <outlet property="delegate" destination="8yf-IB-joc" id="644-0W-E1L"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="QwY-Uj-0Or"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fve-XQ-tTt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="19" y="1527"/>
         </scene>
     </scenes>
     <resources>

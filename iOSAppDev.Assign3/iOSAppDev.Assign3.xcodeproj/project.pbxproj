@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		55D0819E960854427C22BB05 /* libPods-iOSAppDev.Assign3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18472CE3FC2297108514BBDD /* libPods-iOSAppDev.Assign3.a */; };
+		D841BF7428320B2C00A2E3A3 /* TestMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D841BF7328320B2C00A2E3A3 /* TestMenuViewController.swift */; };
 		D86719C42820CC5500C25B91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86719C32820CC5500C25B91 /* AppDelegate.swift */; };
 		D86719C62820CC5500C25B91 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86719C52820CC5500C25B91 /* SceneDelegate.swift */; };
 		D86719C82820CC5500C25B91 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86719C72820CC5500C25B91 /* MainViewController.swift */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		18472CE3FC2297108514BBDD /* libPods-iOSAppDev.Assign3.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOSAppDev.Assign3.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4EE4F107ED667B854E9F1ED /* Pods-iOSAppDev.Assign3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSAppDev.Assign3.debug.xcconfig"; path = "Target Support Files/Pods-iOSAppDev.Assign3/Pods-iOSAppDev.Assign3.debug.xcconfig"; sourceTree = "<group>"; };
+		D841BF7328320B2C00A2E3A3 /* TestMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMenuViewController.swift; sourceTree = "<group>"; };
 		D86719C02820CC5500C25B91 /* iOSAppDev.Assign3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSAppDev.Assign3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D86719C32820CC5500C25B91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D86719C52820CC5500C25B91 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				D86719C72820CC5500C25B91 /* MainViewController.swift */,
 				D8B977922820F38A00EE8888 /* TestViewController.swift */,
 				D8B977942820F39C00EE8888 /* MenuViewController.swift */,
+				D841BF7328320B2C00A2E3A3 /* TestMenuViewController.swift */,
 				E1395BCE2823E1FC0061C2D4 /* MCCreateViewController.swift */,
 			);
 			path = Controller;
@@ -241,6 +244,7 @@
 			files = (
 				E1395BCF2823E1FC0061C2D4 /* MCCreateViewController.swift in Sources */,
 				D86719C82820CC5500C25B91 /* MainViewController.swift in Sources */,
+				D841BF7428320B2C00A2E3A3 /* TestMenuViewController.swift in Sources */,
 				D8B977952820F39C00EE8888 /* MenuViewController.swift in Sources */,
 				D86719C42820CC5500C25B91 /* AppDelegate.swift in Sources */,
 				D8B977932820F38A00EE8888 /* TestViewController.swift in Sources */,
