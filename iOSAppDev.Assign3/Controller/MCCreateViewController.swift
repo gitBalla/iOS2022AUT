@@ -15,6 +15,7 @@ class MCCreateViewController: UIViewController {
     var session: MCSession!
     var nearbyServiceAdvertiser: MCNearbyServiceAdvertiser!
     var myResponse:String? = "undecided"
+    var theirResponse:String? = "undecided"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,7 @@ class MCCreateViewController: UIViewController {
         if let msgData = msg.data(using: .utf8) {
             try? session.send(msgData, toPeers: session.connectedPeers, with: .reliable)
         }
+        checkIfMatch(msg: theirResponse ?? "undecided", myResponse: myResponse ?? "undecided")
     }
     @IBAction func didPressYes(_ sender: Any) {
         let msg = "didPressYes"
@@ -49,25 +51,35 @@ class MCCreateViewController: UIViewController {
         if let msgData = msg.data(using: .utf8) {
             try? session.send(msgData, toPeers: session.connectedPeers, with: .reliable)
         }
-        
+        checkIfMatch(msg: theirResponse ?? "undecided", myResponse: myResponse ?? "undecided")
     }
+    
     func checkIfMatch (msg:String, myResponse:String) -> Bool {
         if myResponse == "Yes" && msg == "didPressYes"{
             print("We have a Match!")
+            resetResponses()
             return true
         } else if myResponse == "No" && msg == "didPressYes"{
             print("no match, go next")
+            resetResponses()
             return false
         } else if myResponse == "No" && msg == "didPressNo"{
             print("no match, go next")
+            resetResponses()
             return false
         } else if myResponse == "Yes" && msg == "didPressNo" {
             print("no match, go next")
+            resetResponses()
             return false
         } else {
             print("waiting on peer to answer")
             return false
         }
+    }
+
+    func resetResponses () {
+        myResponse = "undecided"
+        theirResponse = "undecided"
     }
 }
 
@@ -102,8 +114,10 @@ extension MCCreateViewController: MCSessionDelegate {
         print("didReceive Data from \(peerID)")
         if let msg = String(data: data, encoding: .utf8){
             print("received: \(msg)")
+            theirResponse = msg
             DispatchQueue.main.async {
-                self.checkIfMatch(msg:msg,myResponse:self.myResponse ?? "undecided")
+                self.checkIfMatch(msg:self.theirResponse ?? "undecided",myResponse:self.myResponse ?? "undecided")
+                //self.myResponse = "undecided"
             }
         }
     }
