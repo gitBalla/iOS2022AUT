@@ -14,7 +14,7 @@ class MCCreateViewController: UIViewController {
     var peerID: MCPeerID!
     var session: MCSession!
     var nearbyServiceAdvertiser: MCNearbyServiceAdvertiser!
-    var myResponseYes = false
+    var myResponse:String? = "undecided"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,28 +38,36 @@ class MCCreateViewController: UIViewController {
     }
     @IBAction func didPressNo(_ sender: Any) {
         let msg = "didPressNo"
-        myResponseYes = false
+        myResponse = "No"
         if let msgData = msg.data(using: .utf8) {
             try? session.send(msgData, toPeers: session.connectedPeers, with: .reliable)
         }
     }
     @IBAction func didPressYes(_ sender: Any) {
         let msg = "didPressYes"
-        myResponseYes = true
+        myResponse = "Yes"
         if let msgData = msg.data(using: .utf8) {
             try? session.send(msgData, toPeers: session.connectedPeers, with: .reliable)
         }
-        //checkIfMatch(msg:msg ,myResponseYes: myResponseYes)
+        
     }
-    func checkIfMatch (msg:String, myResponseYes:Bool) -> Bool {
-        if myResponseYes == true && msg == "didPressYes"{
+    func checkIfMatch (msg:String, myResponse:String) -> Bool {
+        if myResponse == "Yes" && msg == "didPressYes"{
             print("We have a Match!")
             return true
-        } else {
+        } else if myResponse == "No" && msg == "didPressYes"{
             print("no match, go next")
             return false
+        } else if myResponse == "No" && msg == "didPressNo"{
+            print("no match, go next")
+            return false
+        } else if myResponse == "Yes" && msg == "didPressNo" {
+            print("no match, go next")
+            return false
+        } else {
+            print("waiting on peer to answer")
+            return false
         }
-            
     }
 }
 
@@ -95,7 +103,7 @@ extension MCCreateViewController: MCSessionDelegate {
         if let msg = String(data: data, encoding: .utf8){
             print("received: \(msg)")
             DispatchQueue.main.async {
-                self.checkIfMatch(msg:msg,myResponseYes:self.myResponseYes)
+                self.checkIfMatch(msg:msg,myResponse:self.myResponse ?? "undecided")
             }
         }
     }
