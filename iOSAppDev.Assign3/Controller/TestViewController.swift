@@ -9,6 +9,7 @@ import GooglePlaces
 import UIKit
 import CoreLocation
 
+
 class TestViewController: UIViewController, CLLocationManagerDelegate  {
     // labels to display info
     @IBOutlet private var nameLabel: UILabel!
@@ -70,4 +71,4 @@ class TestViewController: UIViewController, CLLocationManagerDelegate  {
         strongSelf.addressLabel.text = place.formattedAddress
       }
     }
-  }
+}
