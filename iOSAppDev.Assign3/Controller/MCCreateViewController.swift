@@ -13,8 +13,8 @@ class MCCreateViewController: UIViewController {
     
     var peerID: MCPeerID!
     var session: MCSession!
-    //var advertiserAssistant: MCAdvertiserAssistant!
     var nearbyServiceAdvertiser: MCNearbyServiceAdvertiser!
+    var myResponseYes = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,17 +38,31 @@ class MCCreateViewController: UIViewController {
     }
     @IBAction func didPressNo(_ sender: Any) {
         let msg = "didPressNo"
+        myResponseYes = false
         if let msgData = msg.data(using: .utf8) {
             try? session.send(msgData, toPeers: session.connectedPeers, with: .reliable)
         }
     }
     @IBAction func didPressYes(_ sender: Any) {
         let msg = "didPressYes"
+        myResponseYes = true
         if let msgData = msg.data(using: .utf8) {
             try? session.send(msgData, toPeers: session.connectedPeers, with: .reliable)
         }
+        //checkIfMatch(msg:msg ,myResponseYes: myResponseYes)
+    }
+    func checkIfMatch (msg:String, myResponseYes:Bool) -> Bool {
+        if myResponseYes == true && msg == "didPressYes"{
+            print("We have a Match!")
+            return true
+        } else {
+            print("no match, go next")
+            return false
+        }
+            
     }
 }
+
 
 
 extension MCCreateViewController: MCBrowserViewControllerDelegate {
@@ -77,9 +91,12 @@ extension MCCreateViewController: MCSessionDelegate {
     }
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
-        print("didReceive Data")
+        print("didReceive Data from \(peerID)")
         if let msg = String(data: data, encoding: .utf8){
             print("received: \(msg)")
+            DispatchQueue.main.async {
+                self.checkIfMatch(msg:msg,myResponseYes:self.myResponseYes)
+            }
         }
     }
     
