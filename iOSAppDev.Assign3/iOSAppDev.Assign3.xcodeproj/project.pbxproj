@@ -59,6 +59,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D8401BDB2834A3FE0018BA75 /* GooglePlaces Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D8B977922820F38A00EE8888 /* TestViewController.swift */,
+				D841BF7328320B2C00A2E3A3 /* TestMenuViewController.swift */,
+			);
+			path = "GooglePlaces Controller";
+			sourceTree = "<group>";
+		};
 		D86719B72820CC5500C25B91 = {
 			isa = PBXGroup;
 			children = (
@@ -110,10 +119,9 @@
 		D8B977912820EF0500EE8888 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D8401BDB2834A3FE0018BA75 /* GooglePlaces Controller */,
 				D86719C72820CC5500C25B91 /* MainViewController.swift */,
-				D8B977922820F38A00EE8888 /* TestViewController.swift */,
 				D8B977942820F39C00EE8888 /* MenuViewController.swift */,
-				D841BF7328320B2C00A2E3A3 /* TestMenuViewController.swift */,
 				E1395BCE2823E1FC0061C2D4 /* MCCreateViewController.swift */,
 			);
 			path = Controller;

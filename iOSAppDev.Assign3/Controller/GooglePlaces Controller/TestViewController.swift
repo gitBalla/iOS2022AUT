@@ -14,6 +14,7 @@ class TestViewController: UIViewController, CLLocationManagerDelegate  {
     // labels to display info
     @IBOutlet private var nameLabel: UILabel!
     @IBOutlet private var addressLabel: UILabel!
+    @IBOutlet weak var placeImageView: UIImageView!
     // google places interface
     private var placesClient: GMSPlacesClient!
     // handles access to location services within app
@@ -50,7 +51,7 @@ class TestViewController: UIViewController, CLLocationManagerDelegate  {
 
     // on button press loads current location name and formatted address
     @IBAction func getCurrentPlace(_ sender: UIButton) {
-      let placeFields: GMSPlaceField = [.name, .formattedAddress]
+        let placeFields: GMSPlaceField = [.name, .formattedAddress, .photos]
       placesClient.findPlaceLikelihoodsFromCurrentLocation(withPlaceFields: placeFields) { [weak self] (placeLikelihoods, error) in
         guard let strongSelf = self else {
           return
@@ -66,9 +67,26 @@ class TestViewController: UIViewController, CLLocationManagerDelegate  {
           strongSelf.addressLabel.text = ""
           return
         }
+          strongSelf.nameLabel.text = place.name
+          strongSelf.addressLabel.text = place.formattedAddress
+          
+          
+          // Get the metadata for the first photo in the place photo metadata list.
+          let photoMetadata: GMSPlacePhotoMetadata = place.photos![0]
 
-        strongSelf.nameLabel.text = place.name
-        strongSelf.addressLabel.text = place.formattedAddress
+          // Call loadPlacePhoto to display the bitmap and attribution.
+          self?.placesClient?.loadPlacePhoto(photoMetadata, callback: { (photo, error) -> Void in
+            if let error = error {
+              // TODO: Handle the error.
+              print("Error loading photo metadata: \(error.localizedDescription)")
+              return
+            } else {
+              // Display the first image and its attributions.
+                self?.placeImageView?.image = photo;
+            }
+          })
+          
+
       }
     }
 }

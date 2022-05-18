@@ -14,6 +14,7 @@ class TestMenuViewController: UIViewController, CLLocationManagerDelegate {
 
 
     @IBOutlet var testMenuTableView: UITableView!
+    @IBOutlet weak var placeImageView: UIImageView!
     
     //
     private var placeLikelihoods: [GMSPlaceLikelihood]?
@@ -56,16 +57,15 @@ class TestMenuViewController: UIViewController, CLLocationManagerDelegate {
         }
         locationManager.startUpdatingLocation()
 
-        // Note: The OptionSet syntax below is enabled by the GMSPlaceField+SetAlgebra extension.
-        // See: GMSPlaceField+SetAlgebra.swift
-        let placeFields: GMSPlaceField = [.name, .placeID]
+        let placeFields: GMSPlaceField = [.name, .types, .photos]
          
         placesClient.findPlaceLikelihoodsFromCurrentLocation(withPlaceFields: placeFields) {
             [weak self] (list, error) -> Void in
             guard let strongSelf = self else { return }
-
+            
             strongSelf.placeLikelihoods = list?.filter { likelihood in
               !(likelihood.place.name?.isEmpty ?? true)
+                && (likelihood.place.types?.contains("restaurant") ?? true)
             }
             
             self!.testMenuTableView.reloadData()
@@ -78,10 +78,7 @@ class TestMenuViewController: UIViewController, CLLocationManagerDelegate {
 
 extension TestMenuViewController: UITableViewDelegate {
     func testMenuTableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // When a cell is selected, say hello
-        let index = indexPath.row;
-        //let name = self.highScores[index]
-        print("Selected \(index)")
+
     }
 }
 
@@ -91,7 +88,6 @@ extension TestMenuViewController: UITableViewDataSource {
     // tells the table how many rows to have, only if under 10
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let likelihoods = placeLikelihoods else {
-            print("failed")
           return 0
         }
         return likelihoods.count
@@ -108,9 +104,8 @@ extension TestMenuViewController: UITableViewDataSource {
           return cell
         }
         if likelihoods.count >= 0 && indexPath.row < likelihoods.count {
-          cell.textLabel?.text = likelihoods[indexPath.row].place.name
+            cell.textLabel?.text = likelihoods[indexPath.row].place.name
         }
-
         
         // Return the cell to TableView
         return cell;
