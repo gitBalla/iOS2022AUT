@@ -57,7 +57,7 @@ playground.xcworkspace
 # Pods/
 #
 # Add this line if you want to avoid checking in source code from the Xcode workspace
-# *.xcworkspace
+*.xcworkspace
 
 # Carthage
 #
@@ -88,3 +88,10 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+
+.DS_Store
+iOSAppDev.Assign3/.DS_Store
+iOSAppDev.Assign3/Podfile.lock
+iOSAppDev.Assign3/Pods/
+iOSAppDev.Assign3/iOSAppDev.Assign3.xcworkspace/
+iOSAppDev.Assign3.xcodeproj/project.pbxproj
