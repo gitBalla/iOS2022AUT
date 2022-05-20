@@ -17,12 +17,14 @@ class MCCreateViewController: UIViewController {
     var myResponse:String? = "undecided"
     var theirResponse:String? = "undecided"
     
+    @IBOutlet weak var foodImageView: UIImageView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         peerID = MCPeerID(displayName: UIDevice.current.name)
         session = MCSession(peer: peerID)
         session.delegate = self
-
     }
     
     
@@ -30,6 +32,7 @@ class MCCreateViewController: UIViewController {
         nearbyServiceAdvertiser = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: "food-tinder")
         nearbyServiceAdvertiser.delegate = self
         nearbyServiceAdvertiser.startAdvertisingPeer()
+        print("Created new session!")
     }
     
     @IBAction func join(_ sender: Any) {
@@ -77,6 +80,8 @@ class MCCreateViewController: UIViewController {
         }
     }
 
+
+    
     func resetResponses () {
         myResponse = "undecided"
         theirResponse = "undecided"

@@ -142,19 +142,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="48" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8is-7x-TLG">
-                                <rect key="frame" x="127" y="665.66666666666663" width="121.33333333333331" height="79"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="48" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8is-7x-TLG">
+                                <rect key="frame" x="127" y="665.33333333333337" width="121.33333333333331" height="79"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyy-As-Leg">
                                         <rect key="frame" x="0.0" y="0.0" width="121.33333333333333" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="31" id="LUA-sv-9wh"/>
+                                        </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="Join a Session"/>
                                         <connections>
                                             <action selector="join:" destination="Na2-ms-whJ" eventType="touchUpInside" id="yYH-zc-lyM"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bb8-lB-ikf">
+                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bb8-lB-ikf">
                                         <rect key="frame" x="0.0" y="48" width="121.33333333333333" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="31" id="fTi-sm-c8X"/>
+                                        </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="tinted" title="Create Session"/>
                                         <connections>
@@ -162,12 +168,18 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="Bb8-lB-ikf" firstAttribute="top" secondItem="eyy-As-Leg" secondAttribute="bottom" constant="17" id="WVT-fL-mNa"/>
+                                </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="Nsv-Vf-Lhi">
-                                <rect key="frame" x="100.66666666666669" y="561" width="174" height="31"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="Nsv-Vf-Lhi">
+                                <rect key="frame" x="100.66666666666669" y="560.66666666666663" width="174" height="31"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O8c-zg-uhv">
                                         <rect key="frame" x="0.0" y="0.0" width="47" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="31" id="T3B-7Q-MVX"/>
+                                        </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="No"/>
                                         <connections>
@@ -176,6 +188,9 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nar-s5-ouB">
                                         <rect key="frame" x="127" y="0.0" width="47" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="31" id="r6N-EC-Ina"/>
+                                        </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="tinted" title="Yes"/>
                                         <connections>
@@ -183,22 +198,36 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="nar-s5-ouB" firstAttribute="centerY" secondItem="Nsv-Vf-Lhi" secondAttribute="centerY" id="XVy-DW-mvM"/>
+                                </constraints>
                             </stackView>
+                            <imageView verifyAmbiguity="ignoreSizes" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" placeholderIntrinsicWidth="256" placeholderIntrinsicHeight="406" image="indianfood" translatesAutoresizingMaskIntoConstraints="NO" id="pcL-c1-AAW">
+                                <rect key="frame" x="67" y="151.00000000000003" width="241" height="352.66666666666674"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yf3-Ln-zdM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="yf3-Ln-zdM" firstAttribute="bottom" secondItem="8is-7x-TLG" secondAttribute="bottom" constant="33.5" id="49l-7L-7dV"/>
-                            <constraint firstItem="8is-7x-TLG" firstAttribute="top" secondItem="Nsv-Vf-Lhi" secondAttribute="bottom" constant="73.5" id="XMU-TJ-eap"/>
+                            <constraint firstItem="8is-7x-TLG" firstAttribute="top" secondItem="Nsv-Vf-Lhi" secondAttribute="bottom" constant="73.666666666666629" id="09D-kV-Yja"/>
+                            <constraint firstItem="pcL-c1-AAW" firstAttribute="centerX" secondItem="yf3-Ln-zdM" secondAttribute="centerX" id="B4G-Ij-8FT"/>
+                            <constraint firstItem="pcL-c1-AAW" firstAttribute="leading" secondItem="yf3-Ln-zdM" secondAttribute="leading" constant="67" id="BcQ-Px-ukp"/>
+                            <constraint firstItem="pcL-c1-AAW" firstAttribute="top" secondItem="yf3-Ln-zdM" secondAttribute="top" constant="63" id="GJB-vu-qFD"/>
+                            <constraint firstItem="Nsv-Vf-Lhi" firstAttribute="top" secondItem="pcL-c1-AAW" secondAttribute="bottom" constant="57" id="THC-Pq-TOd"/>
+                            <constraint firstItem="yf3-Ln-zdM" firstAttribute="trailing" secondItem="pcL-c1-AAW" secondAttribute="trailing" constant="67" id="WrD-XU-wcW"/>
+                            <constraint firstItem="yf3-Ln-zdM" firstAttribute="bottom" secondItem="Nsv-Vf-Lhi" secondAttribute="bottom" constant="186.33333333333337" id="XRt-79-akn"/>
                             <constraint firstItem="Nsv-Vf-Lhi" firstAttribute="centerX" secondItem="yf3-Ln-zdM" secondAttribute="centerX" id="kb0-Fv-rfe"/>
                             <constraint firstItem="8is-7x-TLG" firstAttribute="centerX" secondItem="yf3-Ln-zdM" secondAttribute="centerX" id="ykh-A2-djg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="sVF-Mt-9pm"/>
+                    <connections>
+                        <outlet property="foodImageView" destination="pcL-c1-AAW" id="dJg-Ry-RdE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iVy-lQ-S6K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="933" y="832"/>
+            <point key="canvasLocation" x="930.76923076923072" y="831.042654028436"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="MVX-fp-bt7">
@@ -240,6 +269,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="indianfood" width="388" height="560"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
