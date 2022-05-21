@@ -7,17 +7,20 @@
 
 import UIKit
 import MultipeerConnectivity
-import CardSlider
+import SwiftUI
 
-struct Item: CardSliderItem {
-    var image: UIImage
-    var rating: Int?
-    var title: String
-    var subtitle: String?
-    var description: String?
-}
 
-class MCCreateViewController: UIViewController, CardSliderDataSource{
+class MCCreateViewController: UIViewController{
+    
+    let contentView = UIHostingController(rootView: ContentView())
+    
+    var body: some View {
+        GeometryReader { proxy in
+            ZStack {
+                CardView(proxy: proxy)
+            }
+        }
+    }
     
     var peerID: MCPeerID!
     var session: MCSession!
@@ -25,40 +28,24 @@ class MCCreateViewController: UIViewController, CardSliderDataSource{
     var myResponse:String? = "undecided"
     var theirResponse:String? = "undecided"
     
-    var data = [Item]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         peerID = MCPeerID(displayName: UIDevice.current.name)
         session = MCSession(peer: peerID)
         session.delegate = self
         
-        data.append(Item(image: UIImage(named: "Pizza")!,
-                               rating: 1,
-                               title: "Restaurants",
-                               subtitle: "Which one is best for the two of you?",
-                               description: "You able to pick and save the cuisine of interest"))
-
-              data.append(Item(image: UIImage(named: "Indian")!,
-                               rating: 1,
-                               title: "Restaurants",
-                               subtitle: "Which one is best for the two of you?",
-                               description: "You able to pick and save the cuisine of interest"))
-
-              data.append(Item(image: UIImage(named: "Salmon")!,
-                               rating: 1,
-                               title: "Restaurants",
-                               subtitle: "Which one is best for the two of you?",
-                               description: "You able to pick and save the cuisine of interest"))
+        addChild(contentView)
+        view.addSubview(contentView.view)
+        setupConstraints()
     }
     
-    @IBAction func didTapFindRestaurants(_ sender: Any) {
-        let vc = CardSliderViewController.with(dataSource: self);
-        vc.title = "Welcome!"
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true)
+    fileprivate func setupConstraints() {
+        contentView.view.translatesAutoresizingMaskIntoConstraints = false
+        contentView.view.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        contentView.view.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
+        contentView.view.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
+        contentView.view.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
     }
-    
     
     @IBAction func advertise(_ sender: Any) {
         nearbyServiceAdvertiser = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: "food-tinder")
@@ -86,15 +73,9 @@ class MCCreateViewController: UIViewController, CardSliderDataSource{
             try? session.send(msgData, toPeers: session.connectedPeers, with: .reliable)
         }
         checkIfMatch(msg: theirResponse ?? "undecided", myResponse: myResponse ?? "undecided")
+        
     }
     
-    func item(for index: Int) -> CardSliderItem {
-        return data[index]
-    }
-    
-    func numberOfItems() -> Int {
-        return data.count
-    }
     
     func checkIfMatch (msg:String, myResponse:String) -> Bool {
         if myResponse == "Yes" && msg == "didPressYes"{
@@ -123,7 +104,10 @@ class MCCreateViewController: UIViewController, CardSliderDataSource{
         myResponse = "undecided"
         theirResponse = "undecided"
     }
+    
+    
 }
+
 
 
 
@@ -178,6 +162,7 @@ extension MCCreateViewController: MCNearbyServiceAdvertiserDelegate {
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
         invitationHandler(true, session)
     }
+    
     
     
 }
