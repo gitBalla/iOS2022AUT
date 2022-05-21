@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		55D0819E960854427C22BB05 /* libPods-iOSAppDev.Assign3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18472CE3FC2297108514BBDD /* libPods-iOSAppDev.Assign3.a */; };
+		D82639FB28386D7C004D85CE /* PlacesResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82639FA28386D7C004D85CE /* PlacesResult.swift */; };
+		D82639FD28386DDC004D85CE /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82639FC28386DDC004D85CE /* Place.swift */; };
+		D82639FF28386EB2004D85CE /* PlacePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82639FE28386EB2004D85CE /* PlacePhoto.swift */; };
+		D8263A04283877AA004D85CE /* PlacesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8263A03283877AA004D85CE /* PlacesClient.swift */; };
+		D8263A0628389350004D85CE /* PlaceLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8263A0528389350004D85CE /* PlaceLocation.swift */; };
 		D841BF7428320B2C00A2E3A3 /* TestMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D841BF7328320B2C00A2E3A3 /* TestMenuViewController.swift */; };
 		D86719C42820CC5500C25B91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86719C32820CC5500C25B91 /* AppDelegate.swift */; };
 		D86719C62820CC5500C25B91 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86719C52820CC5500C25B91 /* SceneDelegate.swift */; };
@@ -23,6 +28,17 @@
 /* Begin PBXFileReference section */
 		18472CE3FC2297108514BBDD /* libPods-iOSAppDev.Assign3.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOSAppDev.Assign3.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4EE4F107ED667B854E9F1ED /* Pods-iOSAppDev.Assign3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSAppDev.Assign3.debug.xcconfig"; path = "Target Support Files/Pods-iOSAppDev.Assign3/Pods-iOSAppDev.Assign3.debug.xcconfig"; sourceTree = "<group>"; };
+		D82639FA28386D7C004D85CE /* PlacesResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesResult.swift; sourceTree = "<group>"; };
+		D82639FC28386DDC004D85CE /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		D82639FE28386EB2004D85CE /* PlacePhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacePhoto.swift; sourceTree = "<group>"; };
+		D8263A03283877AA004D85CE /* PlacesClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesClient.swift; sourceTree = "<group>"; };
+		D8263A0528389350004D85CE /* PlaceLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceLocation.swift; sourceTree = "<group>"; };
+		D8263A142838A577004D85CE /* powered_by_google_on_non_white@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "powered_by_google_on_non_white@3x.png"; sourceTree = "<group>"; };
+		D8263A152838A577004D85CE /* powered_by_google_on_non_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powered_by_google_on_non_white.png; sourceTree = "<group>"; };
+		D8263A162838A577004D85CE /* powered_by_google_on_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powered_by_google_on_white.png; sourceTree = "<group>"; };
+		D8263A172838A577004D85CE /* powered_by_google_on_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "powered_by_google_on_white@2x.png"; sourceTree = "<group>"; };
+		D8263A182838A577004D85CE /* powered_by_google_on_white@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "powered_by_google_on_white@3x.png"; sourceTree = "<group>"; };
+		D8263A192838A577004D85CE /* powered_by_google_on_non_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "powered_by_google_on_non_white@2x.png"; sourceTree = "<group>"; };
 		D841BF7328320B2C00A2E3A3 /* TestMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMenuViewController.swift; sourceTree = "<group>"; };
 		D86719C02820CC5500C25B91 /* iOSAppDev.Assign3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSAppDev.Assign3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D86719C32820CC5500C25B91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,13 +75,29 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		D8401BDB2834A3FE0018BA75 /* GooglePlaces Controller */ = {
+		D8263A0028386FAA004D85CE /* Places */ = {
 			isa = PBXGroup;
 			children = (
-				D8B977922820F38A00EE8888 /* TestViewController.swift */,
-				D841BF7328320B2C00A2E3A3 /* TestMenuViewController.swift */,
+				D82639FA28386D7C004D85CE /* PlacesResult.swift */,
+				D82639FC28386DDC004D85CE /* Place.swift */,
+				D8263A0528389350004D85CE /* PlaceLocation.swift */,
+				D82639FE28386EB2004D85CE /* PlacePhoto.swift */,
+				D8263A03283877AA004D85CE /* PlacesClient.swift */,
 			);
-			path = "GooglePlaces Controller";
+			path = Places;
+			sourceTree = "<group>";
+		};
+		D8263A132838A577004D85CE /* PoweredByGoogleImages */ = {
+			isa = PBXGroup;
+			children = (
+				D8263A152838A577004D85CE /* powered_by_google_on_non_white.png */,
+				D8263A192838A577004D85CE /* powered_by_google_on_non_white@2x.png */,
+				D8263A142838A577004D85CE /* powered_by_google_on_non_white@3x.png */,
+				D8263A162838A577004D85CE /* powered_by_google_on_white.png */,
+				D8263A172838A577004D85CE /* powered_by_google_on_white@2x.png */,
+				D8263A182838A577004D85CE /* powered_by_google_on_white@3x.png */,
+			);
+			path = PoweredByGoogleImages;
 			sourceTree = "<group>";
 		};
 		D86719B72820CC5500C25B91 = {
@@ -95,6 +127,7 @@
 				D86719C32820CC5500C25B91 /* AppDelegate.swift */,
 				D86719C52820CC5500C25B91 /* SceneDelegate.swift */,
 				D86719CC2820CC5500C25B91 /* Assets.xcassets */,
+				D8263A132838A577004D85CE /* PoweredByGoogleImages */,
 				D86719CE2820CC5500C25B91 /* LaunchScreen.storyboard */,
 				D86719D12820CC5500C25B91 /* Info.plist */,
 			);
@@ -104,6 +137,7 @@
 		D8B9778F2820EEF000EE8888 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D8263A0028386FAA004D85CE /* Places */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -119,7 +153,8 @@
 		D8B977912820EF0500EE8888 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D8401BDB2834A3FE0018BA75 /* GooglePlaces Controller */,
+				D841BF7328320B2C00A2E3A3 /* TestMenuViewController.swift */,
+				D8B977922820F38A00EE8888 /* TestViewController.swift */,
 				D86719C72820CC5500C25B91 /* MainViewController.swift */,
 				D8B977942820F39C00EE8888 /* MenuViewController.swift */,
 				E1395BCE2823E1FC0061C2D4 /* MCCreateViewController.swift */,
@@ -250,13 +285,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D82639FF28386EB2004D85CE /* PlacePhoto.swift in Sources */,
 				E1395BCF2823E1FC0061C2D4 /* MCCreateViewController.swift in Sources */,
+				D8263A04283877AA004D85CE /* PlacesClient.swift in Sources */,
 				D86719C82820CC5500C25B91 /* MainViewController.swift in Sources */,
+				D82639FB28386D7C004D85CE /* PlacesResult.swift in Sources */,
 				D841BF7428320B2C00A2E3A3 /* TestMenuViewController.swift in Sources */,
 				D8B977952820F39C00EE8888 /* MenuViewController.swift in Sources */,
 				D86719C42820CC5500C25B91 /* AppDelegate.swift in Sources */,
+				D8263A0628389350004D85CE /* PlaceLocation.swift in Sources */,
 				D8B977932820F38A00EE8888 /* TestViewController.swift in Sources */,
 				D86719C62820CC5500C25B91 /* SceneDelegate.swift in Sources */,
+				D82639FD28386DDC004D85CE /* Place.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

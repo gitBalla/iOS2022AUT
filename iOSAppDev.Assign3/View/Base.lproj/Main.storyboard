@@ -99,55 +99,24 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="xal-fR-BwG">
                                 <rect key="frame" x="38" y="88" width="338" height="720"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfZ-sJ-njK">
-                                        <rect key="frame" x="0.0" y="0.0" width="338" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Current Place"/>
-                                        <connections>
-                                            <action selector="getCurrentPlace:" destination="VGK-a5-mDU" eventType="touchUpInside" id="7VC-uH-Xgp"/>
-                                        </connections>
-                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Zy-mn-5YO">
+                                        <rect key="frame" x="0.0" y="0.0" width="338" height="128"/>
+                                    </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sks-aO-mZ1">
-                                        <rect key="frame" x="0.0" y="49" width="338" height="109"/>
+                                        <rect key="frame" x="0.0" y="146" width="338" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Viq-vQ-eXY">
-                                        <rect key="frame" x="0.0" y="176" width="338" height="443"/>
+                                        <rect key="frame" x="0.0" y="164" width="338" height="520"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oXz-75-RFE">
-                                        <rect key="frame" x="0.0" y="637" width="338" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Find Nearby"/>
-                                        <connections>
-                                            <segue destination="8yf-IB-joc" kind="show" id="KGg-8e-mxl"/>
-                                        </connections>
-                                    </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HUF-Ru-JIl">
-                                        <rect key="frame" x="0.0" y="686" width="338" height="34"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxw-0y-7nG">
-                                                <rect key="frame" x="0.0" y="0.0" width="72" height="34"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="cxw-0y-7nG" secondAttribute="height" multiplier="36:17" id="5dY-bC-Dos"/>
-                                                </constraints>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Find at:"/>
-                                            </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rn8-Is-GN6">
-                                                <rect key="frame" x="72" y="0.0" width="266" height="34"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="rn8-Is-GN6" secondAttribute="height" multiplier="133:17" id="i4l-ha-sRc"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="powered_by_google_on_white" translatesAutoresizingMaskIntoConstraints="NO" id="tNb-d9-BOj">
+                                        <rect key="frame" x="0.0" y="702" width="338" height="18"/>
+                                    </imageView>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -165,6 +134,7 @@
                     <connections>
                         <outlet property="addressLabel" destination="Viq-vQ-eXY" id="7jf-B5-2Qg"/>
                         <outlet property="nameLabel" destination="sks-aO-mZ1" id="okb-yR-UXg"/>
+                        <outlet property="placeImageView" destination="7Zy-mn-5YO" id="mih-Lf-XyA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Ej-0J-pa5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -302,6 +272,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="powered_by_google_on_white" width="144" height="18"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
