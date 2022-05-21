@@ -11,9 +11,8 @@ import SwiftUI
 
 
 class MCCreateViewController: UIViewController{
-    
-    let contentView = UIHostingController(rootView: ContentView())
-    
+
+    @IBOutlet weak var UIView: UIView!
     var body: some View {
         GeometryReader { proxy in
             ZStack {
@@ -33,19 +32,17 @@ class MCCreateViewController: UIViewController{
         peerID = MCPeerID(displayName: UIDevice.current.name)
         session = MCSession(peer: peerID)
         session.delegate = self
-        
+        let contentView = UIHostingController(rootView: ContentView())
         addChild(contentView)
-        view.addSubview(contentView.view)
-        setupConstraints()
+        contentView.view.frame = UIView.bounds
+        UIView.addSubview(contentView.view)
+        contentView.didMove(toParent: self)
+
     }
-    
-    fileprivate func setupConstraints() {
-        contentView.view.translatesAutoresizingMaskIntoConstraints = false
-        contentView.view.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        contentView.view.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
-        contentView.view.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
-        contentView.view.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
-    }
+
+    //@IBSegueAction func segueToHostingController(_ coder: NSCoder) -> UIViewController? {
+        //return UIHostingController
+    //}
     
     @IBAction func advertise(_ sender: Any) {
         nearbyServiceAdvertiser = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: "food-tinder")
@@ -73,6 +70,7 @@ class MCCreateViewController: UIViewController{
             try? session.send(msgData, toPeers: session.connectedPeers, with: .reliable)
         }
         checkIfMatch(msg: theirResponse ?? "undecided", myResponse: myResponse ?? "undecided")
+        
         
     }
     
@@ -104,7 +102,6 @@ class MCCreateViewController: UIViewController{
         myResponse = "undecided"
         theirResponse = "undecided"
     }
-    
     
 }
 
