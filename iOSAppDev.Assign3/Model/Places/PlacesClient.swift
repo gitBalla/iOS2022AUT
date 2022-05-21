@@ -7,12 +7,11 @@
 
 import Foundation
 import CoreLocation
-//import Alamofire
 
 protocol PlacesRequest {
 
     var placesKey : String { get set }
-    func getPlacesData(/*forKeyword keyword: String,*/ forType placeType: String, location: CLLocation, withinMeters radius: Int, using completionHandler: @escaping (PlacesResult) -> ())
+    func getPlacesData(forType placeType: String, location: CLLocation, withinMeters radius: Int, using completionHandler: @escaping (PlacesResult) -> ())
     
 }
 
@@ -25,9 +24,7 @@ class PlacesClient : PlacesRequest {
     func getPlacesData(forType placeType: String, location: CLLocation,withinMeters radius: Int, using completionHandler: @escaping (PlacesResult) -> ())  {
         
         let url = placesURL(forKey: placesKey, location: location, radius: radius, placeType: placeType)
-//        AF.request(url).responseDecodable(of: PlacesResult.self) { response in
-//
-//        }
+
         let task = session.dataTask(with: url) { (responseData, _, error) in
                                                
             if let error = error {
@@ -46,17 +43,15 @@ class PlacesClient : PlacesRequest {
        task.resume()
    }
         
-    func placesURL(forKey apiKey: String, location: CLLocation, /*keyword: String,*/ radius: Int, placeType: String) -> URL {
-        
+    //forms the url request, output to json, search by keyword (type), based on location and rank results by distance
+    func placesURL(forKey apiKey: String, location: CLLocation, radius: Int, placeType: String) -> URL {
         let baseURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
-        //let urlKeyword = "keyword=" + keyword
+        let type = "keyword=" + placeType
         let locationString = "location=" + String(location.coordinate.latitude) + "," + String(location.coordinate.longitude)
-        let searchRadius = "radius=" + String(radius)
-        let type = "type=" + placeType
-        let rankby = "rankby=distance"
+        //let searchRadius = "radius=" + String(radius)  //conflicts with rankby
         let key = "key=" + apiKey
-
-        return URL(string: baseURL + /*urlKeyword + "&" +*/ locationString + "&" + searchRadius + "&" + type + "&" + rankby + "&" + key)!
+        let rankby = "rankby=distance" //conflicts with searchRadius
+        return URL(string: baseURL + type + "&" + locationString + "&" + rankby + "&" + key)!
     }
 
 }

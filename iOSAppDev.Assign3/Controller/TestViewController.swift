@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Alamofire
 import GooglePlaces
 import CoreLocation
 import Foundation
@@ -14,94 +13,166 @@ import Foundation
 
 class TestViewController: UIViewController, CLLocationManagerDelegate  {
     // labels to display info
-    @IBOutlet private var nameLabel: UILabel!
-    @IBOutlet private var addressLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var hoursLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var priceRangeLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var websiteLabel: UILabel!
     @IBOutlet weak var placeImageView: UIImageView!
-    // google places interface
-    private var placesClient: GMSPlacesClient!
-    // handles access to location services within app
+    
+    // handles access to location services within app, holds user location
     let locationManager = CLLocationManager()
     
-    //testing new web api call
-    var placesClientWeb: PlacesRequest = PlacesClient()
-    var currentLocation: CLLocation = CLLocation(latitude: 42.361145, longitude: -71.057083)
-    var radius: Int = 2500
+    // google places web api call
+    var placesClient: PlacesRequest = PlacesClient()
+    var currentLocation: CLLocation = CLLocation(latitude: 00.000000, longitude: -00.000000)
+    var searchRadius: Int = 5000
     var placeType: String = "restaurant"
+    var places: [Place] = [Place]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // localize places interface to view when loading in
-        placesClient = GMSPlacesClient.shared()
-
         // request authorization for location when in use
-        locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        checkLocationAuthorizationStatus(status: locationManager.authorizationStatus)
         locationManager.startUpdatingLocation()
-
-        // error checking for authorization status
-        switch locationManager.authorizationStatus {
-        case .restricted, .denied:
-            print("restricted or denied")
-        case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-        case .authorizedAlways:
-            print("error, should not authorize always")
-        default:
-            print("authorized location when in use")
-            getCurrentPlace()
-            fetchPlacesData(forType: placeType, forLocation: currentLocation, searchRadius: radius)
+        if(locationManager.authorizationStatus == .authorizedWhenInUse) {
+            currentLocation = locationManager.location!
+            fetchPlacesData(type: placeType, location: currentLocation, radius: searchRadius)
+            updateScreen(placesList: places)
+        }
+        locationManager.stopUpdatingLocation()
+    }
+    
+    // Handle location update
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            let latitude = location.coordinate.latitude
+            let longitude = location.coordinate.longitude
+            currentLocation = CLLocation(latitude: latitude, longitude: longitude)
         }
     }
     
-    // handles changes in authorization status
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus)
-    {
+    // Handle failure to get a user’s location
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
 
     }
+    
+    // Handle changes in authorization status
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        checkLocationAuthorizationStatus(status: locationManager.authorizationStatus)
+    }
 
-    // on load, loads current location name and formatted address
-    func getCurrentPlace() {
-        let placeFields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |
-                                                       UInt(GMSPlaceField.placeID.rawValue) |
-                                                       UInt(GMSPlaceField.coordinate.rawValue))
-        placesClient.findPlaceLikelihoodsFromCurrentLocation(withPlaceFields: placeFields) { [weak self] (placeLikelihoods, error) in
-            guard let strongSelf = self else {
-                return
-            }
-
-            guard error == nil else {
-                print("Current place error: \(error?.localizedDescription ?? "")")
-                return
-            }
-
-            guard let place = placeLikelihoods?.first?.place else {
-                strongSelf.nameLabel.text = "No current place"
-                strongSelf.addressLabel.text = ""
-                return
-            }
-            strongSelf.nameLabel.text = place.name
-            strongSelf.addressLabel.text = String(place.coordinate.latitude) + ", " + String(place.coordinate.longitude)
+    func checkLocationAuthorizationStatus(status: CLAuthorizationStatus)  {
+        // error checking for authorization status
+        switch status {
+        case .restricted, .denied:
+            print("restricted or denied")
+            acceptLocationError(title: "Location Authorization Denied", message: "Please go to settings and enable location services for this application to function")
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+            checkLocationAuthorizationStatus(status: locationManager.authorizationStatus)
+        case .authorizedAlways:
+            print("error, should not authorize always")
+            acceptLocationError(title: "Location Authorization Set to Always", message: "This application does not request 'always' access of your location, please investigate")
+        default:
+            print("authorized location when in use")
         }
+    }
+    
+    // shows error if there is an allow location acceptance issue
+    @IBAction func acceptLocationError(title: String, message: String) {
+        let alertController: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction: UIAlertAction = UIAlertAction(title: "OK", style: .default) { (action) -> Void in NSLog("OK was selected")}
+        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                        return
+                    }
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                UIApplication.shared.open(settingsUrl)
+            }
+        }
+        alertController.addAction(okAction)
+        alertController.addAction(settingsAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 
 
 extension TestViewController {
-    func fetchPlacesData(forType: String, forLocation: CLLocation, searchRadius: Int) {
+    
+    func updateScreen(placesList: [Place]) {
+        for place in places.prefix(1) {
+            nameLabel.text = String(place.name)
+            //hoursLabel.text = place.openingHours
+            //ratingLabel.text = ""
+            //priceRangeLabel.text = ""
+            //phoneLabel.text = ""
+            //websiteLabel.text = ""
+            //placeImageView =
+        }
+    }
+    
+    func fetchPlacesData(type: String, location: CLLocation, radius: Int) {
         
-         placesClientWeb.getPlacesData(forType: placeType,location: currentLocation, withinMeters: 2500) { (response) in
-             
-             self.printFirstFive(places: response.results)
-             
-         }
+        placesClient.getPlacesData(forType: type,location: location, withinMeters: radius) { (response) in
+            self.printResults(places: response.results)
+            self.places = response.results
+        }
      }
-    func printFirstFive(places: [Place]) {
-            for place in places{
-                print("*******NEW PLACE********")
-                let name = place.name
-                let address = place.address
-                let location = ("lat: \(place.geometry.location.latitude), lng: \(place.geometry.location.longitude)")
-                print("\(name) is located at \(address), \(location)")
-             }
-         }
+    
+    func printResults(places: [Place]) {
+        for place in places {
+            print("*******NEW PLACE********")
+            let name = place.name
+            let type = place.types[0]
+            let address = place.address
+            let location: CLLocation = CLLocation(latitude: place.geometry.location.latitude, longitude: place.geometry.location.longitude)
+            let distance = round(Double(location.distance(from: self.currentLocation)))
+            print("\(name) is a \(type) located at \(address), \(distance)m away")
+        }
+    }
 }
+
+//    // google places sdk interface, GMS (google mobile services)
+//    private var placesClient: GMSPlacesClient!
+
+// localize places interface to view when loading in
+//placesClient = GMSPlacesClient.shared()
+
+//    // on load, loads current location name and formatted address
+//    func getCurrentPlace() {
+//        let placeFields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |
+//                                                                 UInt(GMSPlaceField.placeID.rawValue) |
+//                                                                 UInt(GMSPlaceField.coordinate.rawValue))
+//        placesClient.findPlaceLikelihoodsFromCurrentLocation(withPlaceFields: placeFields) { [weak self] (placeLikelihoods, error) in
+//            guard let strongSelf = self else {
+//                return
+//            }
+//
+//            guard error == nil else {
+//                print("Current place error: \(error?.localizedDescription ?? "")")
+//                return
+//            }
+//
+//            guard let place = placeLikelihoods?.first?.place else {
+//                strongSelf.nameLabel.text = "No current place"
+//                strongSelf.hoursLabel.text = ""
+//                strongSelf.ratingLabel.text = ""
+//                strongSelf.priceRangeLabel.text = ""
+//                strongSelf.phoneLabel.text = ""
+//                strongSelf.websiteLabel.text = ""
+//                return
+//            }
+//            strongSelf.nameLabel.text = place.name
+//            //strongSelf.hoursLabel.text = place.openingHours
+//            //strongSelf.ratingLabel.text = ""
+//            //strongSelf.priceRangeLabel.text = ""
+//            //strongSelf.phoneLabel.text = ""
+//            //strongSelf.websiteLabel.text = ""
+//            //strongSelf.placeImageView =
+//        }
+//    }
+    
