@@ -7,9 +7,17 @@
 
 import UIKit
 import MultipeerConnectivity
+import CardSlider
 
-class MCCreateViewController: UIViewController {
+struct Item: CardSliderItem {
+    var image: UIImage
+    var rating: Int?
+    var title: String
+    var subtitle: String?
+    var description: String?
+}
 
+class MCCreateViewController: UIViewController, CardSliderDataSource{
     
     var peerID: MCPeerID!
     var session: MCSession!
@@ -17,12 +25,38 @@ class MCCreateViewController: UIViewController {
     var myResponse:String? = "undecided"
     var theirResponse:String? = "undecided"
     
+    var data = [Item]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         peerID = MCPeerID(displayName: UIDevice.current.name)
         session = MCSession(peer: peerID)
         session.delegate = self
+        
+        data.append(Item(image: UIImage(named: "Pizza")!,
+                               rating: 1,
+                               title: "Restaurants",
+                               subtitle: "Which one is best for the two of you?",
+                               description: "You able to pick and save the cuisine of interest"))
 
+              data.append(Item(image: UIImage(named: "Indian")!,
+                               rating: 1,
+                               title: "Restaurants",
+                               subtitle: "Which one is best for the two of you?",
+                               description: "You able to pick and save the cuisine of interest"))
+
+              data.append(Item(image: UIImage(named: "Salmon")!,
+                               rating: 1,
+                               title: "Restaurants",
+                               subtitle: "Which one is best for the two of you?",
+                               description: "You able to pick and save the cuisine of interest"))
+    }
+    
+    @IBAction func didTapFindRestaurants(_ sender: Any) {
+        let vc = CardSliderViewController.with(dataSource: self);
+        vc.title = "Welcome!"
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
     
     
@@ -52,6 +86,14 @@ class MCCreateViewController: UIViewController {
             try? session.send(msgData, toPeers: session.connectedPeers, with: .reliable)
         }
         checkIfMatch(msg: theirResponse ?? "undecided", myResponse: myResponse ?? "undecided")
+    }
+    
+    func item(for index: Int) -> CardSliderItem {
+        return data[index]
+    }
+    
+    func numberOfItems() -> Int {
+        return data.count
     }
     
     func checkIfMatch (msg:String, myResponse:String) -> Bool {

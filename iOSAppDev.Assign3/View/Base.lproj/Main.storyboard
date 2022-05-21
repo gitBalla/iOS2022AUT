@@ -184,13 +184,23 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZb-Uh-EfW">
+                                <rect key="frame" x="121.33333333333333" y="417.66666666666669" width="132.66666666666669" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Find Restaurants"/>
+                                <connections>
+                                    <action selector="didTapFindRestaurants:" destination="Na2-ms-whJ" eventType="touchUpInside" id="Vxo-xu-ear"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yf3-Ln-zdM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="yf3-Ln-zdM" firstAttribute="bottom" secondItem="8is-7x-TLG" secondAttribute="bottom" constant="33.5" id="49l-7L-7dV"/>
+                            <constraint firstItem="TZb-Uh-EfW" firstAttribute="centerY" secondItem="yf3-Ln-zdM" secondAttribute="centerY" id="7ee-0c-lAW"/>
                             <constraint firstItem="8is-7x-TLG" firstAttribute="top" secondItem="Nsv-Vf-Lhi" secondAttribute="bottom" constant="73.5" id="XMU-TJ-eap"/>
                             <constraint firstItem="Nsv-Vf-Lhi" firstAttribute="centerX" secondItem="yf3-Ln-zdM" secondAttribute="centerX" id="kb0-Fv-rfe"/>
+                            <constraint firstItem="TZb-Uh-EfW" firstAttribute="centerX" secondItem="yf3-Ln-zdM" secondAttribute="centerX" id="lio-eo-7cn"/>
                             <constraint firstItem="8is-7x-TLG" firstAttribute="centerX" secondItem="yf3-Ln-zdM" secondAttribute="centerX" id="ykh-A2-djg"/>
                         </constraints>
                     </view>
