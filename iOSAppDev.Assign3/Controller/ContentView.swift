@@ -8,25 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var users = Restaurant.restaurants
+    @State var restaurants = Restaurant.restaurants
     
     var body: some View {
         GeometryReader { proxy in
             ZStack {
-                ForEach(Array(users.enumerated()), id: \.offset) { index, user in
+                ForEach(Array(restaurants.enumerated()), id: \.offset) { index, user in
                     CardView(
                         proxy: proxy,
-                        user: user,
+                        restaurant: user,
                         index: index
                     ) { (index) in
-                        users.remove(at: index)
+                        restaurants.remove(at: index)
                         if index > 0 {
-                            users[index - 1].isBehind = false
+                            restaurants[index - 1].isBehind = false
                         }
                     }
                 }
                 Button("reload", action: {
-                    users.append(contentsOf: Restaurant.restaurants)
+                    restaurants.append(contentsOf: Restaurant.restaurants)
                 }).position(x: proxy.frame(in: .local).midX)
             }
         }

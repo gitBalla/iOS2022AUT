@@ -15,7 +15,7 @@ struct CardView: View {
     @GestureState var isDragging: Bool = false
     
     let threshold: CGFloat = 0.5
-    let user: Restaurant
+    let restaurant: Restaurant
     let index: Int
     let onRemove: ((Int) -> Void)?
     
@@ -44,15 +44,15 @@ struct CardView: View {
             .overlay(
                 GeometryReader { proxy in
                     ZStack {
-                        Image(user.image)
+                        Image(restaurant.image)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .clipped()
                         VStack(alignment: .leading) {
-                            Text(user.name)
+                            Text(restaurant.name)
                                 .foregroundColor(.white)
                                 .fontWeight(.bold)
-                            Text("\(user.distance)Km away")
+                            Text("\(restaurant.distance)Km away")
                                 .foregroundColor(.white)
                                 .fontWeight(.bold)
                         
@@ -102,7 +102,7 @@ struct CardView: View {
             )
             .offset(x: translation.width, y: 0)
             .rotationEffect(.degrees(degrees))
-            .scaleEffect(user.isBehind ? 0.95 : 1)
+            .scaleEffect(restaurant.isBehind ? 0.95 : 1)
             .gesture(dragGesture)
             .animation(.interactiveSpring())
     }
@@ -111,7 +111,7 @@ struct CardView: View {
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { proxy in
-            CardView(proxy: proxy, user: Restaurant.restaurants[0], index: 0, onRemove: nil)
+            CardView(proxy: proxy, restaurant: Restaurant.restaurants[0], index: 0, onRemove: nil)
         }
     }
 }

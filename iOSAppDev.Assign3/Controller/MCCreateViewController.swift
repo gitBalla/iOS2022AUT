@@ -16,7 +16,7 @@ class MCCreateViewController: UIViewController{
     var body: some View {
         GeometryReader { proxy in
             ZStack {
-                CardView(proxy: proxy, user: Restaurant.restaurants[0], index: 0, onRemove: nil)
+                CardView(proxy: proxy, restaurant: Restaurant.restaurants[0], index: 0, onRemove: nil)
             }
         }
     }
