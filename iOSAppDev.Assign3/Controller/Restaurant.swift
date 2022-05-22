@@ -4,7 +4,7 @@
 //
 //  Created by Nicholas on 22/5/22.
 //
-// This file holds all data on the Restaurant cards
+// this File holds all data on the Restaurant cards 
 
 import Foundation
 

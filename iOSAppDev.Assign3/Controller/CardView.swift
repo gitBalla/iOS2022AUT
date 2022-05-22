@@ -19,6 +19,7 @@ struct CardView: View {
     let index: Int
     let onRemove: ((Int) -> Void)?
     
+    //How the app transforms the cards when dragging
     var body: some View {
         let dragGesture = DragGesture()
             .updating($translation) { (value, state, _) in
@@ -41,10 +42,12 @@ struct CardView: View {
                 if value.translation.width > 0 {
                     print ("swiping right")
                 }
+            
                 // checks if the user is swiping left
                 if value.translation.width < 0 {
                     print ("swiping left")
                 }
+
             }
 
         Rectangle()

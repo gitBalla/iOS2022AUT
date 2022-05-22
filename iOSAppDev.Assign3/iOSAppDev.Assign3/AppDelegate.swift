@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     struct AppDelegate: App {
         var body: some Scene {
             WindowGroup {
-                ContentView()
+                ContentView(delegate: ContentViewDelegate())
             }
         }
     }

@@ -8,7 +8,7 @@
 import UIKit
 import MultipeerConnectivity
 import SwiftUI
-
+import Combine
 
 class MCCreateViewController: UIViewController{
 
@@ -21,24 +21,33 @@ class MCCreateViewController: UIViewController{
         }
     }
     
+    
     var peerID: MCPeerID!
     var session: MCSession!
     var nearbyServiceAdvertiser: MCNearbyServiceAdvertiser!
     var myResponse:String? = "undecided"
     var theirResponse:String? = "undecided"
     
+    private var cancellable: AnyCancellable!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let delegate = ContentViewDelegate()
         peerID = MCPeerID(displayName: UIDevice.current.name)
         session = MCSession(peer: peerID)
         session.delegate = self
-        let contentView = UIHostingController(rootView: ContentView())
+        let contentView = UIHostingController(rootView: ContentView(delegate: delegate))
         addChild(contentView)
         contentView.view.frame = UIView.bounds
         UIView.addSubview(contentView.view)
         contentView.didMove(toParent: self)
-
+        
+        self.cancellable = delegate.$myResponseSwipe.sink { myResponseSwipe in
+            print ("sent \(myResponseSwipe)")
+        }
     }
+    
+    
     
     //creates a new session that is discoverable by other devices using the same app
     @IBAction func advertise(_ sender: Any) {
@@ -70,11 +79,10 @@ class MCCreateViewController: UIViewController{
         }
         checkIfMatch(msg: theirResponse ?? "undecided", myResponse: myResponse ?? "undecided")
         
-        
     }
     
     
-    
+    //function gets both the client's response and the connected peer's response and compares the two
     func checkIfMatch (msg:String, myResponse:String) -> Bool {
         if myResponse == "Yes" && msg == "didPressYes"{
             print("We have a Match!")
@@ -97,7 +105,8 @@ class MCCreateViewController: UIViewController{
             return false
         }
     }
-
+    
+    //after both have made a decision reset both responses
     func resetResponses () {
         myResponse = "undecided"
         theirResponse = "undecided"
@@ -159,7 +168,4 @@ extension MCCreateViewController: MCNearbyServiceAdvertiserDelegate {
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
         invitationHandler(true, session)
     }
-    
-    
-    
 }

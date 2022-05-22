@@ -7,7 +7,14 @@
 
 import SwiftUI
 
+//Setting up the class that will allow us to send data from the SwiftUI View to the UIKit
+class ContentViewDelegate: ObservableObject {
+    @Published var myResponseSwipe: String = "undecided"
+}
+
 struct ContentView: View {
+    @ObservedObject var delegate: ContentViewDelegate
+    
     @State var restaurants = Restaurant.restaurants
     
     var body: some View {
@@ -35,6 +42,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(delegate: ContentViewDelegate())
     }
 }
