@@ -7,11 +7,17 @@
 
 import UIKit
 import GooglePlaces //imports Google Places API
+import SwiftUI
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+    struct AppDelegate: App {
+        var body: some Scene {
+            WindowGroup {
+                ContentView(TinderVM: TinderViewModel())
+            }
+        }
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
