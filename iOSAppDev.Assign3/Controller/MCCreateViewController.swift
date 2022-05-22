@@ -36,7 +36,7 @@ class MCCreateViewController: UIViewController{
         peerID = MCPeerID(displayName: UIDevice.current.name)
         session = MCSession(peer: peerID)
         session.delegate = self
-        let contentView = UIHostingController(rootView: ContentView(delegate: delegate))
+        let contentView = UIHostingController(rootView: ContentView(TinderVM: TinderViewModel()))
         addChild(contentView)
         contentView.view.frame = UIView.bounds
         UIView.addSubview(contentView.view)
