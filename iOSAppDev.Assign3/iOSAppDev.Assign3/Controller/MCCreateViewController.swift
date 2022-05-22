@@ -8,9 +8,9 @@
 import UIKit
 import MultipeerConnectivity
 import SwiftUI
-import Combine
 
 class MCCreateViewController: UIViewController{
+    
 
     @IBOutlet weak var UIView: UIView!
     var body: some View {
@@ -22,17 +22,16 @@ class MCCreateViewController: UIViewController{
     }
     
     
+    
     var peerID: MCPeerID!
     var session: MCSession!
     var nearbyServiceAdvertiser: MCNearbyServiceAdvertiser!
     var myResponse:String? = "undecided"
     var theirResponse:String? = "undecided"
-    
-    private var cancellable: AnyCancellable!
+    var isMatch:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let delegate = ContentViewDelegate()
         peerID = MCPeerID(displayName: UIDevice.current.name)
         session = MCSession(peer: peerID)
         session.delegate = self
@@ -42,9 +41,6 @@ class MCCreateViewController: UIViewController{
         UIView.addSubview(contentView.view)
         contentView.didMove(toParent: self)
         
-        //self.cancellable = delegate.$myResponseSwipe.sink { myResponseSwipe in
-        //    print ("sent \(myResponseSwipe)")
-        //}
     }
     
     
@@ -69,7 +65,7 @@ class MCCreateViewController: UIViewController{
         if let msgData = msg.data(using: .utf8) {
             try? session.send(msgData, toPeers: session.connectedPeers, with: .reliable)
         }
-        checkIfMatch(msg: theirResponse ?? "undecided", myResponse: myResponse ?? "undecided")
+        isMatch = checkIfMatch(msg: theirResponse ?? "undecided", myResponse: myResponse ?? "undecided")
     }
     @IBAction func didPressYes(_ sender: Any) {
         let msg = "didPressYes"
@@ -77,7 +73,7 @@ class MCCreateViewController: UIViewController{
         if let msgData = msg.data(using: .utf8) {
             try? session.send(msgData, toPeers: session.connectedPeers, with: .reliable)
         }
-        checkIfMatch(msg: theirResponse ?? "undecided", myResponse: myResponse ?? "undecided")
+        isMatch = checkIfMatch(msg: theirResponse ?? "undecided", myResponse: myResponse ?? "undecided")
     }
     
     

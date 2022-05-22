@@ -17,6 +17,7 @@ struct ContentView: View {
     @ObservedObject var TinderVM: TinderViewModel
     @State var restaurants = Restaurant.restaurants
     
+    
     var body: some View {
         GeometryReader { proxy in
             ZStack {
@@ -50,9 +51,12 @@ class TinderViewModel: NSObject, ObservableObject {
     var peerID: MCPeerID
     var session: MCSession
     var nearbyServiceAdvertiser: MCNearbyServiceAdvertiser?
-    var myResponse = "undecided"
+    var myResponse:String? = "undecided"
+    var theirResponse:String? = "undecided"
+    var isMatch:Bool = false
     
     
+    //initialise base variables for MultipeerConnectivity
     override init() {
         peerID = MCPeerID(displayName: UIDevice.current.name)
         session = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: .required)
@@ -60,12 +64,14 @@ class TinderViewModel: NSObject, ObservableObject {
         session.delegate = self
     }
     
+    //Creates a session for other devices to join
     func advertise() {
         nearbyServiceAdvertiser = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: ServiceType)
         nearbyServiceAdvertiser?.delegate = self
         nearbyServiceAdvertiser?.startAdvertisingPeer()
     }
     
+    //Find and join an open session
     func join() {
         let browser = MCBrowserViewController(serviceType: ServiceType, session: session)
         browser.delegate = self
@@ -74,7 +80,6 @@ class TinderViewModel: NSObject, ObservableObject {
     
     //packages the message to be sent to the connected peer. The message is that the user "DidSwipeNo"
     func didSwipeNo(at msg: String) {
-        _ = "\(msg)"
         print("I am sending no")
         if let msgData = msg.data(using: .utf8) {
             try? session.send(msgData, toPeers: session.connectedPeers, with: .reliable)
@@ -83,7 +88,6 @@ class TinderViewModel: NSObject, ObservableObject {
     
     //packages the message to be sent to the connected peer. The message is that the user "DidSwipeYes"
     func didSwipeYes(at msg: String) {
-        _ = "\(msg)"
         print("I am sending yes")
         if let msgData = msg.data(using: .utf8) {
             try? session.send(msgData, toPeers: session.connectedPeers, with: .reliable)
@@ -93,6 +97,7 @@ class TinderViewModel: NSObject, ObservableObject {
 
 
 extension TinderViewModel: MCSessionDelegate {
+    //when connecting to a device, keep track of all states of connectivity
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
         switch state {
         case .connecting:
@@ -106,11 +111,13 @@ extension TinderViewModel: MCSessionDelegate {
         }
     }
     
+    //calls whenever the device receives a set of data during the session
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
         print("didReceive Data from \(peerID)")
         if let msg = String(data: data, encoding: .utf8){
             print("received: \(msg)")
-            //theirResponse = msg
+            let theirResponse = msg
+        
             DispatchQueue.main.async {
                 //self.checkIfMatch(msg:self.theirResponse ?? "undecided",myResponse:self.myResponse ?? "undecided")
                 //self.myResponse = "undecided"
@@ -118,26 +125,26 @@ extension TinderViewModel: MCSessionDelegate {
         }
     }
     
+    //stubbed protocol function
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
-        
     }
-    
+    //stubbed protocol function
     func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
-        
     }
-    
+    //stubbed protocol function
     func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
-        
     }
 }
 
 extension TinderViewModel: MCNearbyServiceAdvertiserDelegate {
+    //protocol function for when the user has created a session
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
         invitationHandler(true, session)
     }
 }
 
 extension TinderViewModel: MCBrowserViewControllerDelegate {
+    //
     func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {
         browserViewController.dismiss(animated: true)
     }
