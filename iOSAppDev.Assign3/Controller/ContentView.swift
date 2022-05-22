@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var users = User.users
+    @State var users = Restaurant.restaurants
     
     var body: some View {
         GeometryReader { proxy in
@@ -26,7 +26,7 @@ struct ContentView: View {
                     }
                 }
                 Button("reload", action: {
-                    users.append(contentsOf: User.users)
+                    users.append(contentsOf: Restaurant.restaurants)
                 }).position(x: proxy.frame(in: .local).midX)
             }
         }

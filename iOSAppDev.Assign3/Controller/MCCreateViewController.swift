@@ -16,7 +16,7 @@ class MCCreateViewController: UIViewController{
     var body: some View {
         GeometryReader { proxy in
             ZStack {
-                CardView(proxy: proxy, user: User.users[0], index: 0, onRemove: nil)
+                CardView(proxy: proxy, user: Restaurant.restaurants[0], index: 0, onRemove: nil)
             }
         }
     }
@@ -39,22 +39,21 @@ class MCCreateViewController: UIViewController{
         contentView.didMove(toParent: self)
 
     }
-
-    //@IBSegueAction func segueToHostingController(_ coder: NSCoder) -> UIViewController? {
-        //return UIHostingController
-    //}
     
+    //creates a new session that is discoverable by other devices using the same app
     @IBAction func advertise(_ sender: Any) {
         nearbyServiceAdvertiser = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: "food-tinder")
         nearbyServiceAdvertiser.delegate = self
         nearbyServiceAdvertiser.startAdvertisingPeer()
     }
     
+    //search for any open sessions
     @IBAction func join(_ sender: Any) {
         let browser = MCBrowserViewController(serviceType: "food-tinder", session: session)
         browser.delegate = self
         present(browser, animated: true)
     }
+    
     @IBAction func didPressNo(_ sender: Any) {
         let msg = "didPressNo"
         myResponse = "No"

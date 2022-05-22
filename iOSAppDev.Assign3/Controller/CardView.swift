@@ -15,7 +15,7 @@ struct CardView: View {
     @GestureState var isDragging: Bool = false
     
     let threshold: CGFloat = 0.5
-    let user: User
+    let user: Restaurant
     let index: Int
     let onRemove: ((Int) -> Void)?
     
@@ -111,7 +111,7 @@ struct CardView: View {
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { proxy in
-            CardView(proxy: proxy, user: User.users[0], index: 0, onRemove: nil)
+            CardView(proxy: proxy, user: Restaurant.restaurants[0], index: 0, onRemove: nil)
         }
     }
 }
