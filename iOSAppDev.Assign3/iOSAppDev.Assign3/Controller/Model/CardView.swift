@@ -46,6 +46,8 @@ struct CardView: View {
                 // checks if the user is swiping right
                 if value.translation.width > 0 {
                     print ("swiping right")
+                    let msg = "didSwipeYes"
+                    TinderVM.didSwipeYes(at: msg)
                 }
             
                 // checks if the user is swiping left

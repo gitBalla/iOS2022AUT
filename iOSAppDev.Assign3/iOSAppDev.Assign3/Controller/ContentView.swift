@@ -75,7 +75,16 @@ class TinderViewModel: NSObject, ObservableObject {
     //packages the message to be sent to the connected peer. The message is that the user "DidSwipeNo"
     func didSwipeNo(at msg: String) {
         _ = "\(msg)"
-        print("I am sending")
+        print("I am sending no")
+        if let msgData = msg.data(using: .utf8) {
+            try? session.send(msgData, toPeers: session.connectedPeers, with: .reliable)
+        }
+    }
+    
+    //packages the message to be sent to the connected peer. The message is that the user "DidSwipeYes"
+    func didSwipeYes(at msg: String) {
+        _ = "\(msg)"
+        print("I am sending yes")
         if let msgData = msg.data(using: .utf8) {
             try? session.send(msgData, toPeers: session.connectedPeers, with: .reliable)
         }
