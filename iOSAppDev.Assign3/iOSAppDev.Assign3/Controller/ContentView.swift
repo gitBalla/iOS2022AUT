@@ -93,6 +93,36 @@ class TinderViewModel: NSObject, ObservableObject {
             try? session.send(msgData, toPeers: session.connectedPeers, with: .reliable)
         }
     }
+    
+    //function gets both the client's response and the connected peer's response and compares the two
+    func checkIfMatch (msg:String, myResponse:String) -> Bool {
+        if myResponse == "Yes" && msg == "didPressYes"{
+            print("We have a Match!")
+            resetResponses()
+            return true
+        } else if myResponse == "No" && msg == "didPressYes"{
+            print("no match, go next")
+            resetResponses()
+            return false
+        } else if myResponse == "No" && msg == "didPressNo"{
+            print("no match, go next")
+            resetResponses()
+            return false
+        } else if myResponse == "Yes" && msg == "didPressNo" {
+            print("no match, go next")
+            resetResponses()
+            return false
+        } else {
+            print("waiting on peer to answer")
+            return false
+        }
+    }
+    
+    //after both have made a decision reset both responses
+    func resetResponses () {
+        myResponse = "undecided"
+        theirResponse = "undecided"
+    }
 }
 
 
