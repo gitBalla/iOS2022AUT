@@ -17,7 +17,6 @@ struct ContentView: View {
     @ObservedObject var TinderVM: TinderViewModel
     @State var restaurants = Restaurant.restaurants
     
-    
     var body: some View {
         GeometryReader { proxy in
             ZStack {
@@ -33,6 +32,7 @@ struct ContentView: View {
                         }
                     }
                 }
+                //Create the join session and create session buttons
                 Button("Join", action: {
                     TinderVM.join()
                 }).position(x: proxy.frame(in: .local).midX + 70)
@@ -142,15 +142,14 @@ extension TinderViewModel: MCSessionDelegate {
     }
     
     //calls whenever the device receives a set of data during the session
+    //Note: we were having issues trying to get the data to be received. Even though the same implementation was working when we used UIKit
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
         print("didReceive Data from \(peerID)")
         if let msg = String(data: data, encoding: .utf8){
             print("received: \(msg)")
-            let theirResponse = msg
         
             DispatchQueue.main.async {
-                //self.checkIfMatch(msg:self.theirResponse ?? "undecided",myResponse:self.myResponse ?? "undecided")
-                //self.myResponse = "undecided"
+                //TODO: this will call checkIfMatch 
             }
         }
     }
@@ -174,11 +173,11 @@ extension TinderViewModel: MCNearbyServiceAdvertiserDelegate {
 }
 
 extension TinderViewModel: MCBrowserViewControllerDelegate {
-    //
+    // protocol function that closes the join session window when clicking Done
     func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {
         browserViewController.dismiss(animated: true)
     }
-    
+    // protocol function that closes the join session window when cancelling
     func browserViewControllerWasCancelled(_ browserViewController: MCBrowserViewController) {
         browserViewController.dismiss(animated: true)
     }
