@@ -8,16 +8,12 @@
 import SwiftUI
 import MultipeerConnectivity
 
-//Setting up the class that will allow us to send data from the SwiftUI View to the UIKit
-class ContentViewDelegate: ObservableObject {
-    @Published var myResponseSwipe: String = "undecided"
-}
-
 struct ContentView: View {
     @ObservedObject var TinderVM: TinderViewModel
     @State var restaurants = Restaurant.restaurants
     
     var body: some View {
+        //load in cards from the Restaurant folder into a ZStack
         GeometryReader { proxy in
             ZStack {
                 ForEach(Array(restaurants.enumerated()), id: \.offset) { index, user in
@@ -118,7 +114,7 @@ class TinderViewModel: NSObject, ObservableObject {
         }
     }
     
-    //after both have made a decision reset both responses
+    //after both devices have made a decision reset both responses
     func resetResponses () {
         myResponse = "undecided"
         theirResponse = "undecided"
