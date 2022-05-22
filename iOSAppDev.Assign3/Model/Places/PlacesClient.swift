@@ -19,7 +19,7 @@ class PlacesClient : PlacesRequest {
  
     let session = URLSession(configuration: .default)
 
-    var placesKey: String = "AIzaSyCO7VyaREQgfumMiDbACVCUuDtoQe_Qolk"
+    var placesKey: String = "YOUR_API_KEY"
 
     func getPlacesData(forType placeType: String, location: CLLocation,withinMeters radius: Int, using completionHandler: @escaping (PlacesResult) -> ())  {
         
