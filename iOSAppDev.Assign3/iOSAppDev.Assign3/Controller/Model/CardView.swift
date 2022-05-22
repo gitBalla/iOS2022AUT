@@ -58,7 +58,7 @@ struct CardView: View {
                     TinderVM.didSwipeNo(at: msg)
                     //$TinderVM.checkIfMatch(msg: theirResponse ?? "undecided", myResponse: myResponse ?? "undecided")
                 }
-
+                //TODO: block card interaction if user is not connected to a session
             }
 
         //SwiftUI create the card and pull data from the Restaurant file
