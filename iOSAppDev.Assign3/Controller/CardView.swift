@@ -35,9 +35,16 @@ struct CardView: View {
                 
                 if abs(dragPercentage) > threshold {
                     // remove the card
-                    onRemove?(index)
+                    //onRemove?(index)
                 }
-
+                // checks if the user is swiping right
+                if value.translation.width > 0 {
+                    print ("swiping right")
+                }
+                // checks if the user is swiping left
+                if value.translation.width < 0 {
+                    print ("swiping left")
+                }
             }
 
         Rectangle()

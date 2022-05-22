@@ -74,6 +74,7 @@ class MCCreateViewController: UIViewController{
     }
     
     
+    
     func checkIfMatch (msg:String, myResponse:String) -> Bool {
         if myResponse == "Yes" && msg == "didPressYes"{
             print("We have a Match!")
