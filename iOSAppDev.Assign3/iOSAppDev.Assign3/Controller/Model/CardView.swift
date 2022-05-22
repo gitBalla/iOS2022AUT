@@ -26,6 +26,7 @@ struct CardView: View {
     
     //How the app transforms the cards when dragging
     var body: some View {
+        //translate the user's cursor position when dragging the screen
         let dragGesture = DragGesture()
             .updating($translation) { (value, state, _) in
                 state = value.translation
@@ -38,10 +39,9 @@ struct CardView: View {
             }
             .onEnded { (value) in
                 let dragPercentage = value.translation.width / proxy.size.width
-                
                 if abs(dragPercentage) > threshold {
-                    // remove the card
-                    //onRemove?(index)
+                    // remove the card if user drags past the threshold
+                    onRemove?(index)
                 }
                 // checks if the user is swiping right
                 if value.translation.width > 0 {
@@ -58,9 +58,10 @@ struct CardView: View {
                     TinderVM.didSwipeNo(at: msg)
                     //$TinderVM.checkIfMatch(msg: theirResponse ?? "undecided", myResponse: myResponse ?? "undecided")
                 }
-
+                //TODO: block card interaction if user is not connected to a session
             }
 
+        //SwiftUI create the card and pull data from the Restaurant file
         Rectangle()
             .overlay(
                 GeometryReader { proxy in
@@ -82,7 +83,7 @@ struct CardView: View {
                             x: proxy.frame(in: .local).minX + 75,
                             y: proxy.frame(in: .local).maxY - 50
                         )
-                        
+                        //create the emojis that appear when dragging
                         Rectangle()
                             .overlay(Text("👎"))
                             .foregroundColor(.red)
@@ -108,7 +109,6 @@ struct CardView: View {
                             )
                             .scaleEffect(isDragging ? 2 : 1)
                             .animation(.default)
-
                     }
                 }
             )
