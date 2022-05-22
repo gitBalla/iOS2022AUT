@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct CardView: View {
+    
+    @ObservedObject var TinderVM: TinderViewModel
+    
     let proxy: GeometryProxy
     @GestureState var translation: CGSize = .zero
     @GestureState var degrees: Double = 0
@@ -18,6 +21,8 @@ struct CardView: View {
     let restaurant: Restaurant
     let index: Int
     let onRemove: ((Int) -> Void)?
+    @State var myResponse:String? = "undecided"
+    @State var theirResponse:String? = "undecided"
     
     //How the app transforms the cards when dragging
     var body: some View {
@@ -46,6 +51,10 @@ struct CardView: View {
                 // checks if the user is swiping left
                 if value.translation.width < 0 {
                     print ("swiping left")
+                    let msg = "didSwipeNo"
+                    //myResponse = "No"
+                    TinderVM.didSwipeNo(at: msg)
+                    //$TinderVM.checkIfMatch(msg: theirResponse ?? "undecided", myResponse: myResponse ?? "undecided")
                 }
 
             }
@@ -121,7 +130,7 @@ struct CardView: View {
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { proxy in
-            CardView(proxy: proxy, restaurant: Restaurant.restaurants[0], index: 0, onRemove: nil)
+            CardView(TinderVM: TinderViewModel(), proxy: proxy, restaurant: Restaurant.restaurants[0], index: 0, onRemove: nil)
         }
     }
 }

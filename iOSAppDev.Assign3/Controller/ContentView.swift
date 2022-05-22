@@ -22,7 +22,7 @@ struct ContentView: View {
             ZStack {
                 ForEach(Array(restaurants.enumerated()), id: \.offset) { index, user in
                     CardView(
-                        proxy: proxy,
+                        TinderVM: TinderViewModel(), proxy: proxy,
                         restaurant: user,
                         index: index
                     ) { (index) in
@@ -46,22 +46,22 @@ struct ContentView: View {
 class TinderViewModel: NSObject, ObservableObject {
     @Published private var Tinder = MCCreateViewController()
     
-    let ServiceType = "tinder-food"
-    
-    var peerId: MCPeerID
+    let ServiceType = "food-tinder"
+    var peerID: MCPeerID
     var session: MCSession
     var nearbyServiceAdvertiser: MCNearbyServiceAdvertiser?
+    var myResponse = "undecided"
     
     
     override init() {
-        peerId = MCPeerID(displayName: UIDevice.current.name)
-        session = MCSession(peer: peerId, securityIdentity: nil, encryptionPreference: .required)
+        peerID = MCPeerID(displayName: UIDevice.current.name)
+        session = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: .required)
         super.init()
         session.delegate = self
     }
     
     func advertise() {
-        nearbyServiceAdvertiser = MCNearbyServiceAdvertiser(peer: peerId, discoveryInfo: nil, serviceType: ServiceType)
+        nearbyServiceAdvertiser = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: ServiceType)
         nearbyServiceAdvertiser?.delegate = self
         nearbyServiceAdvertiser?.startAdvertisingPeer()
     }
@@ -71,6 +71,15 @@ class TinderViewModel: NSObject, ObservableObject {
         browser.delegate = self
         UIApplication.shared.windows.first?.rootViewController?.present(browser , animated: true)
     }
+    
+    //packages the message to be sent to the connected peer. The message is that the user "DidSwipeNo"
+    func didSwipeNo(at msg: String) {
+        _ = "\(msg)"
+        print("I am sending")
+        if let msgData = msg.data(using: .utf8) {
+            try? session.send(msgData, toPeers: session.connectedPeers, with: .reliable)
+        }
+    }
 }
 
 
@@ -78,20 +87,24 @@ extension TinderViewModel: MCSessionDelegate {
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
         switch state {
         case .connecting:
-            print("\(peerId) state: connecting")
+            print("\(peerID) state: connecting")
         case .connected:
-            print("\(peerId) state: connected")
+            print("\(peerID) state: connected")
         case .notConnected:
-            print("\(peerId) state: not connected")
+            print("\(peerID) state: not connected")
         @unknown default:
-            print("\(peerId) state: unknown")
+            print("\(peerID) state: unknown")
         }
     }
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
-        if let colStr = String(data: data, encoding: .utf8), let col = Int(colStr) {
+        print("didReceive Data from \(peerID)")
+        if let msg = String(data: data, encoding: .utf8){
+            print("received: \(msg)")
+            //theirResponse = msg
             DispatchQueue.main.async {
-                
+                //self.checkIfMatch(msg:self.theirResponse ?? "undecided",myResponse:self.myResponse ?? "undecided")
+                //self.myResponse = "undecided"
             }
         }
     }

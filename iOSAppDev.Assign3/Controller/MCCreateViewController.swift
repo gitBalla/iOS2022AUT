@@ -16,7 +16,7 @@ class MCCreateViewController: UIViewController{
     var body: some View {
         GeometryReader { proxy in
             ZStack {
-                CardView(proxy: proxy, restaurant: Restaurant.restaurants[0], index: 0, onRemove: nil)
+                CardView(TinderVM: TinderViewModel(), proxy: proxy, restaurant: Restaurant.restaurants[0], index: 0, onRemove: nil)
             }
         }
     }
@@ -42,9 +42,9 @@ class MCCreateViewController: UIViewController{
         UIView.addSubview(contentView.view)
         contentView.didMove(toParent: self)
         
-        self.cancellable = delegate.$myResponseSwipe.sink { myResponseSwipe in
-            print ("sent \(myResponseSwipe)")
-        }
+        //self.cancellable = delegate.$myResponseSwipe.sink { myResponseSwipe in
+        //    print ("sent \(myResponseSwipe)")
+        //}
     }
     
     
@@ -78,7 +78,6 @@ class MCCreateViewController: UIViewController{
             try? session.send(msgData, toPeers: session.connectedPeers, with: .reliable)
         }
         checkIfMatch(msg: theirResponse ?? "undecided", myResponse: myResponse ?? "undecided")
-        
     }
     
     
