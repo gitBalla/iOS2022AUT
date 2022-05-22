@@ -8,10 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var users = User.users
+    
     var body: some View {
         GeometryReader { proxy in
             ZStack {
-                CardView(proxy: proxy)
+                ForEach(Array(users.enumerated()), id: \.offset) { index, user in
+                    CardView(
+                        proxy: proxy,
+                        user: user,
+                        index: index
+                    ) { (index) in
+                        users.remove(at: index)
+                        if index > 0 {
+                            users[index - 1].isBehind = false
+                        }
+                    }
+                }
+                Button("reload", action: {
+                    users.append(contentsOf: User.users)
+                }).position(x: proxy.frame(in: .local).midX)
             }
         }
     }

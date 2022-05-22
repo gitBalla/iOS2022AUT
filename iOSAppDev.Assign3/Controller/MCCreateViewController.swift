@@ -16,7 +16,7 @@ class MCCreateViewController: UIViewController{
     var body: some View {
         GeometryReader { proxy in
             ZStack {
-                CardView(proxy: proxy)
+                CardView(proxy: proxy, user: User.users[0], index: 0, onRemove: nil)
             }
         }
     }

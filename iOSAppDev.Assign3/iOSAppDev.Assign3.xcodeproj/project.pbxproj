@@ -20,6 +20,7 @@
 		E1BB791B2839076900AD02F3 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BB791A2839076900AD02F3 /* CardView.swift */; };
 		E1BB791D2839109100AD02F3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BB791C2839109100AD02F3 /* ContentView.swift */; };
 		E1BB791F2839174500AD02F3 /* TinderFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BB791E2839174500AD02F3 /* TinderFoodViewController.swift */; };
+		E1E00B042839D5F300952AA8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E00B032839D5F300952AA8 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		E1BB791A2839076900AD02F3 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		E1BB791C2839109100AD02F3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E1BB791E2839174500AD02F3 /* TinderFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinderFoodViewController.swift; sourceTree = "<group>"; };
+		E1E00B032839D5F300952AA8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E9FA4B4B2B03B5F2C3992606 /* Pods-iOSAppDev.Assign3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSAppDev.Assign3.release.xcconfig"; path = "Target Support Files/Pods-iOSAppDev.Assign3/Pods-iOSAppDev.Assign3.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,6 +120,7 @@
 				D8B977922820F38A00EE8888 /* TestViewController.swift */,
 				D8B977942820F39C00EE8888 /* MenuViewController.swift */,
 				E1395BCE2823E1FC0061C2D4 /* MCCreateViewController.swift */,
+				E1E00B032839D5F300952AA8 /* User.swift */,
 				E1BB791E2839174500AD02F3 /* TinderFoodViewController.swift */,
 				E1BB791A2839076900AD02F3 /* CardView.swift */,
 				E1BB791C2839109100AD02F3 /* ContentView.swift */,
@@ -256,6 +259,7 @@
 				D86719C42820CC5500C25B91 /* AppDelegate.swift in Sources */,
 				D8B977932820F38A00EE8888 /* TestViewController.swift in Sources */,
 				D86719C62820CC5500C25B91 /* SceneDelegate.swift in Sources */,
+				E1E00B042839D5F300952AA8 /* User.swift in Sources */,
 				E1BB791F2839174500AD02F3 /* TinderFoodViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
