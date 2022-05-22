@@ -23,13 +23,10 @@ class TestViewController: UIViewController, CLLocationManagerDelegate  {
     
     // handles access to location services within app, holds user location
     let locationManager = CLLocationManager()
-    
-    // google places web api call
     var placesClient: PlacesRequest = PlacesClient()
     var currentLocation: CLLocation = CLLocation(latitude: 00.000000, longitude: -00.000000)
     var searchRadius: Int = 5000
     var placeType: String = "restaurant"
-    var places: [Place] = [Place]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,12 +35,22 @@ class TestViewController: UIViewController, CLLocationManagerDelegate  {
         locationManager.requestWhenInUseAuthorization()
         checkLocationAuthorizationStatus(status: locationManager.authorizationStatus)
         locationManager.startUpdatingLocation()
+        // if authorized, find the current location, and fetch data
         if(locationManager.authorizationStatus == .authorizedWhenInUse) {
             currentLocation = locationManager.location!
             fetchPlacesData(type: placeType, location: currentLocation, radius: searchRadius)
-            updateScreen(placesList: places)
         }
         locationManager.stopUpdatingLocation()
+    }
+    
+    func updateLabels(name: String) {
+        nameLabel.text = name
+        //hoursLabel.text = place.openingHours
+        //ratingLabel.text = ""
+        //priceRangeLabel.text = ""
+        //phoneLabel.text = ""
+        //websiteLabel.text = ""
+        //placeImageView =
     }
     
     // Handle location update
@@ -102,24 +109,17 @@ class TestViewController: UIViewController, CLLocationManagerDelegate  {
 
 
 extension TestViewController {
-    
-    func updateScreen(placesList: [Place]) {
-        for place in places.prefix(1) {
-            nameLabel.text = String(place.name)
-            //hoursLabel.text = place.openingHours
-            //ratingLabel.text = ""
-            //priceRangeLabel.text = ""
-            //phoneLabel.text = ""
-            //websiteLabel.text = ""
-            //placeImageView =
+     
+    func fetchPlaces(type: String, location: CLLocation, radius: Int) {
+        placesClient.getPlacesData(forType: type,location: location, withinMeters: radius) { (response) in
+            response.results
+
         }
     }
     
     func fetchPlacesData(type: String, location: CLLocation, radius: Int) {
-        
         placesClient.getPlacesData(forType: type,location: location, withinMeters: radius) { (response) in
             self.printResults(places: response.results)
-            self.places = response.results
         }
      }
     
