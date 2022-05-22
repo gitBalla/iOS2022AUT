@@ -4,6 +4,7 @@
 //
 //  Created by John Balla on 21/5/2022.
 //
+//  decodes Place geometry data into usable variables
 
 import Foundation
 

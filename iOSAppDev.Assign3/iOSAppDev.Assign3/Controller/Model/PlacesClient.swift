@@ -4,6 +4,8 @@
 //
 //  Created by John Balla on 21/5/2022.
 //
+//  Places request protocol and places client allows the Google API url to be created
+//  and called to produce an array of places, utilizing Place model
 
 import Foundation
 import CoreLocation
