@@ -16,6 +16,11 @@
 		D86719D02820CC5500C25B91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D86719CE2820CC5500C25B91 /* LaunchScreen.storyboard */; };
 		D8B977932820F38A00EE8888 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B977922820F38A00EE8888 /* TestViewController.swift */; };
 		D8B977952820F39C00EE8888 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B977942820F39C00EE8888 /* MenuViewController.swift */; };
+		D8B9A500283A17AA005A18B1 /* PlacesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B9A4FB283A17A9005A18B1 /* PlacesClient.swift */; };
+		D8B9A501283A17AA005A18B1 /* PlacesResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B9A4FC283A17A9005A18B1 /* PlacesResult.swift */; };
+		D8B9A502283A17AA005A18B1 /* PlaceLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B9A4FD283A17A9005A18B1 /* PlaceLocation.swift */; };
+		D8B9A503283A17AA005A18B1 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B9A4FE283A17AA005A18B1 /* Place.swift */; };
+		D8B9A504283A17AA005A18B1 /* PlacePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B9A4FF283A17AA005A18B1 /* PlacePhoto.swift */; };
 		E1395BCF2823E1FC0061C2D4 /* MCCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1395BCE2823E1FC0061C2D4 /* MCCreateViewController.swift */; };
 		E1BB791B2839076900AD02F3 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BB791A2839076900AD02F3 /* CardView.swift */; };
 		E1BB791D2839109100AD02F3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BB791C2839109100AD02F3 /* ContentView.swift */; };
@@ -35,6 +40,11 @@
 		D86719D12820CC5500C25B91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8B977922820F38A00EE8888 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		D8B977942820F39C00EE8888 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		D8B9A4FB283A17A9005A18B1 /* PlacesClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlacesClient.swift; path = "../../../Files to send/Places/PlacesClient.swift"; sourceTree = "<group>"; };
+		D8B9A4FC283A17A9005A18B1 /* PlacesResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlacesResult.swift; path = "../../../Files to send/Places/PlacesResult.swift"; sourceTree = "<group>"; };
+		D8B9A4FD283A17A9005A18B1 /* PlaceLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceLocation.swift; path = "../../../Files to send/Places/PlaceLocation.swift"; sourceTree = "<group>"; };
+		D8B9A4FE283A17AA005A18B1 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Place.swift; path = "../../../Files to send/Places/Place.swift"; sourceTree = "<group>"; };
+		D8B9A4FF283A17AA005A18B1 /* PlacePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlacePhoto.swift; path = "../../../Files to send/Places/PlacePhoto.swift"; sourceTree = "<group>"; };
 		E1395BCE2823E1FC0061C2D4 /* MCCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCCreateViewController.swift; sourceTree = "<group>"; };
 		E1BB791A2839076900AD02F3 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		E1BB791C2839109100AD02F3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -99,6 +109,11 @@
 		D8B9778F2820EEF000EE8888 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D8B9A4FE283A17AA005A18B1 /* Place.swift */,
+				D8B9A4FD283A17A9005A18B1 /* PlaceLocation.swift */,
+				D8B9A4FF283A17AA005A18B1 /* PlacePhoto.swift */,
+				D8B9A4FB283A17A9005A18B1 /* PlacesClient.swift */,
+				D8B9A4FC283A17A9005A18B1 /* PlacesResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -248,12 +263,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8B9A501283A17AA005A18B1 /* PlacesResult.swift in Sources */,
+				D8B9A503283A17AA005A18B1 /* Place.swift in Sources */,
 				E1BB791B2839076900AD02F3 /* CardView.swift in Sources */,
 				E1395BCF2823E1FC0061C2D4 /* MCCreateViewController.swift in Sources */,
+				D8B9A504283A17AA005A18B1 /* PlacePhoto.swift in Sources */,
 				E1BB791D2839109100AD02F3 /* ContentView.swift in Sources */,
 				D86719C82820CC5500C25B91 /* MainViewController.swift in Sources */,
 				D8B977952820F39C00EE8888 /* MenuViewController.swift in Sources */,
 				D86719C42820CC5500C25B91 /* AppDelegate.swift in Sources */,
+				D8B9A500283A17AA005A18B1 /* PlacesClient.swift in Sources */,
+				D8B9A502283A17AA005A18B1 /* PlaceLocation.swift in Sources */,
 				D8B977932820F38A00EE8888 /* TestViewController.swift in Sources */,
 				D86719C62820CC5500C25B91 /* SceneDelegate.swift in Sources */,
 				E1E00B042839D5F300952AA8 /* User.swift in Sources */,
