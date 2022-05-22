@@ -14,10 +14,6 @@
 		D86719CB2820CC5500C25B91 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D86719C92820CC5500C25B91 /* Main.storyboard */; };
 		D86719CD2820CC5500C25B91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D86719CC2820CC5500C25B91 /* Assets.xcassets */; };
 		D86719D02820CC5500C25B91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D86719CE2820CC5500C25B91 /* LaunchScreen.storyboard */; };
-		D86CA7A4283A49C300175C82 /* TinderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86CA7A2283A49C300175C82 /* TinderViewModel.swift */; };
-		D86CA7A5283A49C300175C82 /* TinderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86CA7A3283A49C300175C82 /* TinderApp.swift */; };
-		D8B977932820F38A00EE8888 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B977922820F38A00EE8888 /* TestViewController.swift */; };
-		D8B977952820F39C00EE8888 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B977942820F39C00EE8888 /* MenuViewController.swift */; };
 		D8EB858C283A34490043F032 /* PlacesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB858A283A23B60043F032 /* PlacesClient.swift */; };
 		D8EB858D283A34720043F032 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB8588283A23B60043F032 /* Place.swift */; };
 		D8EB858E283A34720043F032 /* PlaceLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB8586283A23B60043F032 /* PlaceLocation.swift */; };
@@ -40,10 +36,6 @@
 		D86719CC2820CC5500C25B91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D86719CF2820CC5500C25B91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D86719D12820CC5500C25B91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D86CA7A2283A49C300175C82 /* TinderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TinderViewModel.swift; sourceTree = "<group>"; };
-		D86CA7A3283A49C300175C82 /* TinderApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TinderApp.swift; sourceTree = "<group>"; };
-		D8B977922820F38A00EE8888 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
-		D8B977942820F39C00EE8888 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		D8EB8586283A23B60043F032 /* PlaceLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceLocation.swift; sourceTree = "<group>"; };
 		D8EB8587283A23B60043F032 /* PlacePhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacePhoto.swift; sourceTree = "<group>"; };
 		D8EB8588283A23B60043F032 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
@@ -134,11 +126,7 @@
 		D8EB858B283A241D0043F032 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D86CA7A3283A49C300175C82 /* TinderApp.swift */,
-				D86CA7A2283A49C300175C82 /* TinderViewModel.swift */,
 				D86719C72820CC5500C25B91 /* MainViewController.swift */,
-				D8B977922820F38A00EE8888 /* TestViewController.swift */,
-				D8B977942820F39C00EE8888 /* MenuViewController.swift */,
 				E1395BCE2823E1FC0061C2D4 /* MCCreateViewController.swift */,
 				E1BB791C2839109100AD02F3 /* ContentView.swift */,
 				D8EB8585283A23B60043F032 /* Model */,
@@ -270,17 +258,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1BB791B2839076900AD02F3 /* CardView.swift in Sources */,
-				D86CA7A5283A49C300175C82 /* TinderApp.swift in Sources */,
 				E1395BCF2823E1FC0061C2D4 /* MCCreateViewController.swift in Sources */,
 				E1BB791D2839109100AD02F3 /* ContentView.swift in Sources */,
-				D86CA7A4283A49C300175C82 /* TinderViewModel.swift in Sources */,
 				D8EB858F283A34720043F032 /* PlacesResult.swift in Sources */,
 				D8EB8590283A34720043F032 /* PlacePhoto.swift in Sources */,
 				D86719C82820CC5500C25B91 /* MainViewController.swift in Sources */,
-				D8B977952820F39C00EE8888 /* MenuViewController.swift in Sources */,
 				D86719C42820CC5500C25B91 /* AppDelegate.swift in Sources */,
 				D8EB858C283A34490043F032 /* PlacesClient.swift in Sources */,
-				D8B977932820F38A00EE8888 /* TestViewController.swift in Sources */,
 				D8EB858E283A34720043F032 /* PlaceLocation.swift in Sources */,
 				D86719C62820CC5500C25B91 /* SceneDelegate.swift in Sources */,
 				D8EB858D283A34720043F032 /* Place.swift in Sources */,
