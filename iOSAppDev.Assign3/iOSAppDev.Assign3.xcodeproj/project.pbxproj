@@ -16,7 +16,13 @@
 		D86719D02820CC5500C25B91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D86719CE2820CC5500C25B91 /* LaunchScreen.storyboard */; };
 		D8B977932820F38A00EE8888 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B977922820F38A00EE8888 /* TestViewController.swift */; };
 		D8B977952820F39C00EE8888 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B977942820F39C00EE8888 /* MenuViewController.swift */; };
-		D8B9A508283A198C005A18B1 /* Model in Resources */ = {isa = PBXBuildFile; fileRef = D8B9A507283A198C005A18B1 /* Model */; };
+		D8EB858C283A34490043F032 /* PlacesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB858A283A23B60043F032 /* PlacesClient.swift */; };
+		D8EB858D283A34720043F032 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB8588283A23B60043F032 /* Place.swift */; };
+		D8EB858E283A34720043F032 /* PlaceLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB8586283A23B60043F032 /* PlaceLocation.swift */; };
+		D8EB858F283A34720043F032 /* PlacesResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB8589283A23B60043F032 /* PlacesResult.swift */; };
+		D8EB8590283A34720043F032 /* PlacePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB8587283A23B60043F032 /* PlacePhoto.swift */; };
+		D8EB8593283A3B8A0043F032 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB8591283A3B8A0043F032 /* ViewModel.swift */; };
+		D8EB8594283A3B8A0043F032 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB8592283A3B8A0043F032 /* App.swift */; };
 		E1395BCF2823E1FC0061C2D4 /* MCCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1395BCE2823E1FC0061C2D4 /* MCCreateViewController.swift */; };
 		E1BB791B2839076900AD02F3 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BB791A2839076900AD02F3 /* CardView.swift */; };
 		E1BB791D2839109100AD02F3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BB791C2839109100AD02F3 /* ContentView.swift */; };
@@ -36,7 +42,13 @@
 		D86719D12820CC5500C25B91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8B977922820F38A00EE8888 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		D8B977942820F39C00EE8888 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		D8B9A507283A198C005A18B1 /* Model */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Model; path = ../../../../../../Downloads/Model; sourceTree = "<group>"; };
+		D8EB8586283A23B60043F032 /* PlaceLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceLocation.swift; sourceTree = "<group>"; };
+		D8EB8587283A23B60043F032 /* PlacePhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacePhoto.swift; sourceTree = "<group>"; };
+		D8EB8588283A23B60043F032 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		D8EB8589283A23B60043F032 /* PlacesResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesResult.swift; sourceTree = "<group>"; };
+		D8EB858A283A23B60043F032 /* PlacesClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesClient.swift; sourceTree = "<group>"; };
+		D8EB8591283A3B8A0043F032 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewModel.swift; path = ../../../../../../../../Downloads/ViewModel.swift; sourceTree = "<group>"; };
+		D8EB8592283A3B8A0043F032 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = App.swift; path = ../../../../../../../../Downloads/App.swift; sourceTree = "<group>"; };
 		E1395BCE2823E1FC0061C2D4 /* MCCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCCreateViewController.swift; sourceTree = "<group>"; };
 		E1BB791A2839076900AD02F3 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		E1BB791C2839109100AD02F3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -69,9 +81,6 @@
 			isa = PBXGroup;
 			children = (
 				D86719C22820CC5500C25B91 /* iOSAppDev.Assign3 */,
-				D8B9A507283A198C005A18B1 /* Model */,
-				D8B977912820EF0500EE8888 /* Controller */,
-				D8B977902820EF0000EE8888 /* View */,
 				D86719C12820CC5500C25B91 /* Products */,
 				129748402CBF1388E88209B6 /* Pods */,
 				E8883DD41A80FE50E09FF6E4 /* Frameworks */,
@@ -94,6 +103,8 @@
 				D86719CC2820CC5500C25B91 /* Assets.xcassets */,
 				D86719CE2820CC5500C25B91 /* LaunchScreen.storyboard */,
 				D86719D12820CC5500C25B91 /* Info.plist */,
+				D8EB858B283A241D0043F032 /* Controller */,
+				D8B977902820EF0000EE8888 /* View */,
 			);
 			path = iOSAppDev.Assign3;
 			sourceTree = "<group>";
@@ -106,16 +117,31 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		D8B977912820EF0500EE8888 /* Controller */ = {
+		D8EB8585283A23B60043F032 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D8EB858A283A23B60043F032 /* PlacesClient.swift */,
+				D8EB8586283A23B60043F032 /* PlaceLocation.swift */,
+				D8EB8587283A23B60043F032 /* PlacePhoto.swift */,
+				D8EB8588283A23B60043F032 /* Place.swift */,
+				D8EB8589283A23B60043F032 /* PlacesResult.swift */,
+				E1E00B032839D5F300952AA8 /* User.swift */,
+				E1BB791A2839076900AD02F3 /* CardView.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D8EB858B283A241D0043F032 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D8EB8592283A3B8A0043F032 /* App.swift */,
+				D8EB8591283A3B8A0043F032 /* ViewModel.swift */,
 				D86719C72820CC5500C25B91 /* MainViewController.swift */,
 				D8B977922820F38A00EE8888 /* TestViewController.swift */,
 				D8B977942820F39C00EE8888 /* MenuViewController.swift */,
 				E1395BCE2823E1FC0061C2D4 /* MCCreateViewController.swift */,
-				E1E00B032839D5F300952AA8 /* User.swift */,
-				E1BB791A2839076900AD02F3 /* CardView.swift */,
 				E1BB791C2839109100AD02F3 /* ContentView.swift */,
+				D8EB8585283A23B60043F032 /* Model */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -190,7 +216,6 @@
 			files = (
 				D86719D02820CC5500C25B91 /* LaunchScreen.storyboard in Resources */,
 				D86719CD2820CC5500C25B91 /* Assets.xcassets in Resources */,
-				D8B9A508283A198C005A18B1 /* Model in Resources */,
 				D86719CB2820CC5500C25B91 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,11 +272,18 @@
 				E1BB791B2839076900AD02F3 /* CardView.swift in Sources */,
 				E1395BCF2823E1FC0061C2D4 /* MCCreateViewController.swift in Sources */,
 				E1BB791D2839109100AD02F3 /* ContentView.swift in Sources */,
+				D8EB858F283A34720043F032 /* PlacesResult.swift in Sources */,
+				D8EB8590283A34720043F032 /* PlacePhoto.swift in Sources */,
+				D8EB8594283A3B8A0043F032 /* App.swift in Sources */,
 				D86719C82820CC5500C25B91 /* MainViewController.swift in Sources */,
 				D8B977952820F39C00EE8888 /* MenuViewController.swift in Sources */,
 				D86719C42820CC5500C25B91 /* AppDelegate.swift in Sources */,
+				D8EB858C283A34490043F032 /* PlacesClient.swift in Sources */,
 				D8B977932820F38A00EE8888 /* TestViewController.swift in Sources */,
+				D8EB8593283A3B8A0043F032 /* ViewModel.swift in Sources */,
+				D8EB858E283A34720043F032 /* PlaceLocation.swift in Sources */,
 				D86719C62820CC5500C25B91 /* SceneDelegate.swift in Sources */,
+				D8EB858D283A34720043F032 /* Place.swift in Sources */,
 				E1E00B042839D5F300952AA8 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
